@@ -1,18 +1,57 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
 
-import { AppComponent } from './app.component';
+import {AppComponent} from './app.component';
+import {HttpClient, HttpClientModule} from '@angular/common/http';
+import {HeaderComponent} from './header/header.component';
+import {BodyComponent} from './body/body.component';
+import {FooterComponent} from './footer/footer.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { GeneralComponent } from './body/general/general.component';
+import { NewsComponent } from './body/news/news.component';
+import { AlertsComponent } from './body/alerts/alerts.component';
+import { VoidTraderComponent } from './body/void-trader/void-trader.component';
+import { SortieComponent } from './body/sortie/sortie.component';
+import { InvasionsComponent } from './body/invasions/invasions.component';
+import { ConclaveChallengesComponent } from './body/conclave-challenges/conclave-challenges.component';
+import { FlashSalesComponent } from './body/flash-sales/flash-sales.component';
 
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HeaderComponent,
+    BodyComponent,
+    FooterComponent,
+    GeneralComponent,
+    NewsComponent,
+    AlertsComponent,
+    VoidTraderComponent,
+    SortieComponent,
+    InvasionsComponent,
+    ConclaveChallengesComponent,
+    FlashSalesComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpClientModule,
+    NgbModule.forRoot(),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
