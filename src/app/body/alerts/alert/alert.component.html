@@ -1,0 +1,8 @@
+<div class="node col-6">{{ alert.mission.node }}</div>
+<div class="type col-6">{{ alert.mission.type }}</div>
+<div class="faction col-6">{{ alert.mission.faction }}</div>
+<div class="reward col-6">{{ alert.mission.reward.toString() }}</div>
+<p class="col-12">
+  <ngb-progressbar type="{{colorType}}" [value]="progressValue" [striped]="true" [animated]="true"><i>{{ this.timeText }}</i>
+  </ngb-progressbar>
+</p>

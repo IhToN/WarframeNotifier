@@ -12,6 +12,10 @@
     },
     "SEARCH": "Search"
   },
+  "BODY": {
+    "TITLE": "Warframe Notifications",
+    "DESCRIPTION": "<i>Warframe Notifications</i> is a fan site not associated with <i>Digital Extremes</i>"
+  },
   "FOOTER": {
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
   }

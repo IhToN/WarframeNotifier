@@ -18,6 +18,7 @@ import { SortieComponent } from './body/sortie/sortie.component';
 import { InvasionsComponent } from './body/invasions/invasions.component';
 import { ConclaveChallengesComponent } from './body/conclave-challenges/conclave-challenges.component';
 import { FlashSalesComponent } from './body/flash-sales/flash-sales.component';
+import { AlertComponent } from './body/alerts/alert/alert.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -36,7 +37,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     SortieComponent,
     InvasionsComponent,
     ConclaveChallengesComponent,
-    FlashSalesComponent
+    FlashSalesComponent,
+    AlertComponent
   ],
   imports: [
     BrowserModule,

@@ -8,8 +8,7 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BodyComponent implements OnInit {
 
-  results: string[];
-  @Input() platform: string;
+  @Input() wfData: any;
 
   // Inject HttpClient into your component or service.
   constructor() {

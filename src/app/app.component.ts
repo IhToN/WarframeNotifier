@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {TranslateService} from '@ngx-translate/core';
+import * as WorldState from 'warframe-worldstate-parser';
 
 @Component({
   selector: 'app-root',
@@ -8,6 +9,8 @@ import {TranslateService} from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
+  apiurl = 'https://atalgaba.com/api.php?url=';
+
   lang: string;
   platform: string;
   wfData: any;
@@ -29,16 +32,29 @@ export class AppComponent implements OnInit {
     setInterval(this.requestData(), 60 * 1000);
   }
 
+  getWFApi() {
+    switch (this.platform) {
+      case 'ps4':
+        return 'http://content.ps4.warframe.com/dynamic/worldState.php';
+      case 'xb1':
+        return 'http://content.xb1.warframe.com/dynamic/worldState.php';
+      case 'pc':
+      default:
+        return 'http://content.warframe.com/dynamic/worldState.php';
+    }
+  }
+
   requestData() {
-    this.http.get('https://ws.warframestat.us/' + this.platform).subscribe(data => {
+    this.http.get(this.apiurl + this.getWFApi()).subscribe(data => {
       // Read the result field from the JSON response.
-      this.wfData = data;
+      this.wfData = new WorldState(JSON.stringify(data));
       console.log(this.wfData);
     });
   }
 
   selectPlatform(platform) {
     this.platform = platform;
+    this.requestData();
   }
 
   selectLanguage(language) {

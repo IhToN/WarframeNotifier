@@ -1,0 +1,15 @@
+.image img {
+  display: block;
+  width: 100%;
+}
+
+.text .date {
+  text-decoration: none;
+  font-size: .75rem;
+  color: gray;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
