@@ -2,6 +2,7 @@
             [languages]="translate.getLangs()" [currentLang]="translate.currentLang"
             [currentPlat]="platform"></app-header>
 
-<app-body [wfData]="wfData"></app-body>
+<!--Este componente nativo hace que el enrutador cargue una página dinámicamente-->
+<router-outlet></router-outlet>
 
 <app-footer></app-footer>

@@ -1,0 +1,10 @@
+.icon {
+  display: inline-block;
+  width: 100%;
+  max-width: 1rem;
+}
+
+.icon img {
+  display: block;
+  width: 100%;
+}

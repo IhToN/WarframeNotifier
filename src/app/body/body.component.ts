@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
+import {ActivatedRoute} from '@angular/router';
+import {WarframeService} from '../warframe.service';
 
 @Component({
   selector: 'app-body',
@@ -8,12 +10,17 @@ import {HttpClient} from '@angular/common/http';
 })
 export class BodyComponent implements OnInit {
 
-  @Input() wfData: any;
+  wfData: any;
 
   // Inject HttpClient into your component or service.
-  constructor() {
+  constructor(private wfService: WarframeService) {
+    this.wfService.wfData$.subscribe((data) => {
+        this.wfData = data; // And he have data here too!
+      }
+    );
   }
 
   ngOnInit(): void {
+    this.wfService.requestData();
   }
 }

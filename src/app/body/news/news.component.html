@@ -3,7 +3,7 @@
     <div class="image col-4"><img src="{{new.imageLink}}"/></div>
     <div class="text col-8">
       <div class="message">{{new.message}}</div>
-      <div class="date">{{new.eta}}</div>
+      <div class="date">{{new.date | date:'dd/MM/yyyy, HH:mm, ZZZZ'}}</div>
     </div>
   </a>
 </div>

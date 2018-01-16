@@ -18,5 +18,14 @@
   },
   "FOOTER": {
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
+  },
+  "ALERTS": {
+    "TITLE": "Alerts",
+    "LEVEL": "Enemy Lvl:",
+    "ARCHWING": "Archwing Level",
+    "NIGHTMARE": "Nightmare Level"
+  },
+  "NEWS": {
+    "TITLE": "News"
   }
 }

@@ -10,19 +10,32 @@ import {FooterComponent} from './footer/footer.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {TranslateLoader, TranslateModule} from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
-import { GeneralComponent } from './body/general/general.component';
-import { NewsComponent } from './body/news/news.component';
-import { AlertsComponent } from './body/alerts/alerts.component';
-import { VoidTraderComponent } from './body/void-trader/void-trader.component';
-import { SortieComponent } from './body/sortie/sortie.component';
-import { InvasionsComponent } from './body/invasions/invasions.component';
-import { ConclaveChallengesComponent } from './body/conclave-challenges/conclave-challenges.component';
-import { FlashSalesComponent } from './body/flash-sales/flash-sales.component';
-import { AlertComponent } from './body/alerts/alert/alert.component';
+import {GeneralComponent} from './body/general/general.component';
+import {NewsComponent} from './body/news/news.component';
+import {AlertsComponent} from './body/alerts/alerts.component';
+import {VoidTraderComponent} from './body/void-trader/void-trader.component';
+import {SortieComponent} from './body/sortie/sortie.component';
+import {InvasionsComponent} from './body/invasions/invasions.component';
+import {ConclaveChallengesComponent} from './body/conclave-challenges/conclave-challenges.component';
+import {FlashSalesComponent} from './body/flash-sales/flash-sales.component';
+import {AlertComponent} from './body/alerts/alert/alert.component';
+import {RouterModule, Routes} from '@angular/router';
+import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
+import {WarframeService} from './warframe.service';
+import {Ng2Webstorage} from 'ngx-webstorage';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
+
+// Se definen las rutas de la app. Cada una se corresponde con un componente
+const routes: Routes = [
+  // La ruta '' indica la ruta por defecto (antiguo index.html)
+  {path: '', component: BodyComponent},
+  // Cualquier otra ruta no considerada en las entradas anteriores -> ERROR
+  {path: '**', component: PageNotFoundComponent}
+];
+export const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
@@ -38,11 +51,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     InvasionsComponent,
     ConclaveChallengesComponent,
     FlashSalesComponent,
-    AlertComponent
+    AlertComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    routing,
+    Ng2Webstorage,
     NgbModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -52,7 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     })
   ],
-  providers: [],
+  providers: [WarframeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

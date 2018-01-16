@@ -12,7 +12,20 @@
     },
     "SEARCH": "Buscar"
   },
+  "BODY": {
+    "TITLE": "Warframe Notifications",
+    "DESCRIPTION": "<i>Warframe Notifications</i> es una web fan y no está asociada con <i>Digital Extremes</i>"
+  },
   "FOOTER": {
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - La marca registrada y los derechos de Warframe son propiedad de Digital Extremes."
+  },
+  "ALERTS": {
+    "TITLE": "Alertas",
+    "LEVEL": "Nivel:",
+    "ARCHWING": "Nivel de Archwing",
+    "NIGHTMARE": "Nivel Pesadilla"
+  },
+  "NEWS": {
+    "TITLE": "Noticias"
   }
 }
