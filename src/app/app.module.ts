@@ -25,7 +25,7 @@ import {WarframeService} from './warframe.service';
 import {Ng2Webstorage} from 'ngx-webstorage';
 
 export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(http);
+  return new TranslateHttpLoader(http, 'assets/i18n/');
 }
 
 // Se definen las rutas de la app. Cada una se corresponde con un componente

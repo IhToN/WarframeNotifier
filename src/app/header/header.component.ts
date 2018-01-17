@@ -1,4 +1,6 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {TranslateService} from '@ngx-translate/core';
+import {WarframeService} from '../warframe.service';
 
 @Component({
   selector: 'app-header',
@@ -7,26 +9,11 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input() languages: any;
-  @Input() currentLang: string;
-  @Input() currentPlat: string;
-
-  @Output() platformSelect = new EventEmitter<any>();
-  @Output() langSelect = new EventEmitter<any>();
-
   platforms = ['pc', 'ps4', 'xb1'];
 
-  constructor() {
+  constructor(public translate: TranslateService, public wfService: WarframeService) {
   }
 
   ngOnInit() {
-  }
-
-  selectPlatform(platform) {
-    this.platformSelect.emit(platform);
-  }
-
-  selectLanguage(language) {
-    this.langSelect.emit(language);
   }
 }

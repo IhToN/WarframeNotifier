@@ -48,6 +48,16 @@
   padding-left: 1.75rem;
 }
 
+.reward.nitain {
+  background-color: cadetblue;
+  padding-left: 1.75em;
+}
+
+.reward.rubedo {
+  background-color: firebrick;
+  padding-left: 1.75em;
+}
+
 .reward.traces {
   background-color: dodgerblue;
   padding-left: 1.5rem;

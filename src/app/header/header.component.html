@@ -14,10 +14,10 @@
       <li class="nav-item dropdown">
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-primary" id="platPicker" ngbDropdownToggle
-                  [translate]="'HEAD.PLATFORM.'+currentPlat.toUpperCase()"></button>
+                  [translate]="'HEAD.PLATFORM.'+wfService.platform.toUpperCase()"></button>
           <div ngbDropdownMenu aria-labelledby="platPicker">
-            <button *ngFor="let plat of platforms" class="dropdown-item" (click)="selectPlatform(plat)"
-                    [translate]="'HEAD.PLATFORM.'+plat.toUpperCase()" [disabled]="plat === currentPlat"></button>
+            <button *ngFor="let plat of platforms" class="dropdown-item" (click)="wfService.selectPlatform(plat)"
+                    [translate]="'HEAD.PLATFORM.'+plat.toUpperCase()" [disabled]="plat === wfService.platform"></button>
           </div>
         </div>
       </li>
@@ -25,8 +25,8 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-secondary" id="langPicker" ngbDropdownToggle translate>HEAD.LANG.SELECT</button>
           <div ngbDropdownMenu aria-labelledby="langPicker">
-            <button *ngFor="let lang of languages" class="dropdown-item" (click)="selectLanguage(lang)"
-                    [translate]="'HEAD.LANG.'+lang.toUpperCase()" [disabled]="lang === currentLang"></button>
+            <button *ngFor="let lang of translate.getLangs()" class="dropdown-item" (click)="wfService.selectLanguage(lang)"
+                    [translate]="'HEAD.LANG.'+lang.toUpperCase()" [disabled]="lang === wfService.language"></button>
           </div>
         </div>
       </li>
