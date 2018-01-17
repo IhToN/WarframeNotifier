@@ -1,0 +1,34 @@
+{
+  "HEAD": {
+    "LANG": {
+      "SELECT": "Language",
+      "EN": "English",
+      "ES": "Español"
+    },
+    "PLATFORM": {
+      "PC": "PC",
+      "PS4": "PlayStation 4",
+      "XB1": "Xbox One"
+    },
+    "SEARCH": "Search"
+  },
+  "BODY": {
+    "TITLE": "Warframe Notifications",
+    "DESCRIPTION": "<i>Warframe Notifications</i> is a fan site not associated with <i>Digital Extremes</i>"
+  },
+  "FOOTER": {
+    "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
+  },
+  "ALERTS": {
+    "TITLE": "Alerts",
+    "LEVEL": "Enemy Lvl:",
+    "ARCHWING": "Archwing Level",
+    "NIGHTMARE": "Nightmare Level",
+    "START": "Start: {{time}}",
+    "INPROGRESS": "{{time}}",
+    "EXPIRED": "Expired: -{{time}}"
+  },
+  "NEWS": {
+    "TITLE": "News"
+  }
+}
