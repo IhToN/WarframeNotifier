@@ -1,8 +1,9 @@
-<div class="new" *ngFor="let new of news">
-  <a class="row" href="{{new.link}}" target="_blank">
-    <div class="image col-4"><img src="{{new.imageLink}}"/></div>
-    <div class="text col-8">
-      <div class="message">{{new.message}}</div>
+<div class="list-group">
+  <a class="new row mx-0 py-1 list-group-item list-group-item-action" href="{{new.link}}" target="_blank"
+     [ngClass]="{'prime-access': new.primeAccess, 'update': new.update}" *ngFor="let new of news">
+    <div class="image col-12 col-md-4"><img src="{{new.imageLink}}"/></div>
+    <div class="text col-12 col-md-8">
+      <div class="message">{{new.getTitle(wfs.language)}}</div>
       <div class="date">{{new.date | date:'dd/MM/yyyy, HH:mm, ZZZZ'}}</div>
     </div>
   </a>

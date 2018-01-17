@@ -23,7 +23,10 @@
     "TITLE": "Alertas",
     "LEVEL": "Nivel:",
     "ARCHWING": "Nivel de Archwing",
-    "NIGHTMARE": "Nivel Pesadilla"
+    "NIGHTMARE": "Nivel Pesadilla",
+    "START": "Comienza en {{time}}",
+    "INPROGRESS": "{{time}}",
+    "EXPIRED": "Acabada: -{{time}}"
   },
   "NEWS": {
     "TITLE": "Noticias"

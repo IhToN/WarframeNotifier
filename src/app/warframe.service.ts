@@ -11,6 +11,8 @@ export class WarframeService implements OnInit {
 
   @LocalStorage('wfnPlatform', 'pc')
   platform: string;
+  @LocalStorage('wfnLanguage', 'en')
+  language: string;
 
   wfData$: Observable<any>;
   private wfData = new Subject<any>();
@@ -33,6 +35,10 @@ export class WarframeService implements OnInit {
     this.requestData();
   }
 
+  selectLanguage(language) {
+    this.language = language;
+  }
+
   getWFApi() {
     switch (this.platform) {
       case 'ps4':
@@ -49,6 +55,7 @@ export class WarframeService implements OnInit {
     this.http.get(this.apiurl + this.getWFApi()).subscribe(data => {
       const wsData = new WorldState(JSON.stringify(data));
       this.wfData.next(wsData);
+      console.log(data);
       console.log(wsData);
     });
   }

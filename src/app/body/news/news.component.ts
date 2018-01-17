@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {WarframeService} from '../../warframe.service';
 
 @Component({
   selector: 'app-news',
@@ -8,11 +9,16 @@ import {Component, Input, OnInit} from '@angular/core';
 export class NewsComponent implements OnInit {
 
   @Input() news: any;
+  wfs: any;
 
-  constructor() { }
+  constructor(private wfService: WarframeService) {
+    this.wfs = wfService;
+  }
 
   ngOnInit() {
     console.log(this.news);
   }
+
+
 
 }

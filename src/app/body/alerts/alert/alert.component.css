@@ -8,3 +8,97 @@
   display: block;
   width: 100%;
 }
+
+.node {
+  font-weight: bold;
+}
+
+.reward {
+  line-height: 1;
+  color: #fff;
+  text-align: right;
+  vertical-align: middle;
+  background-color: #777;
+  position: relative;
+}
+
+.reward.start {
+  background-color: darkorange;
+}
+
+.reward.inprogress {
+  background-color: green;
+}
+
+.reward.expired {
+  background-color: darkred;
+}
+
+.reward.credits {
+  padding-left: 1.5rem;
+}
+
+.reward.helmet {
+  background-color: darkcyan;
+  padding-left: 1.75rem;
+}
+
+.reward.endo {
+  background-color: darkkhaki;
+  padding-left: 1.75rem;
+}
+
+.reward.traces {
+  background-color: dodgerblue;
+  padding-left: 1.5rem;
+}
+
+.reward.nightmare {
+  background-color: rebeccapurple;
+  padding-left: 1.5rem;
+}
+
+.reward.weapon {
+  background-color: slategrey;
+  padding-left: 1.5rem;
+}
+
+.reward.skin {
+  background-color: slategrey;
+  padding-left: 1.5rem;
+}
+
+.reward.argonCrystal {
+  background-color: darkorchid;
+  padding-left: 1.5rem;
+}
+
+.reward.oxium {
+  background-color: goldenrod;
+  padding-left: 1.5rem;
+}
+
+.reward .icon {
+  position: absolute;
+  max-width: 1.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+}
+
+.reward.nightmare .icon,
+.reward.weapon .icon {
+  max-width: 1rem;
+  border-radius: 50%;
+  overflow: hidden;
+  left: 3px
+}
+
+.reward.credits .icon,
+.reward.argonCrystal .icon,
+.reward.oxium .icon,
+.reward.traces .icon,
+.reward.skin .icon {
+  max-width: 1.1rem;
+  left: 3px
+}

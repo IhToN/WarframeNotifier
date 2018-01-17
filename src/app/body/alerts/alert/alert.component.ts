@@ -1,14 +1,8 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import moment = require('moment');
+import * as moment from 'moment';
 
 function pad2(number) {
-  if (number >= 0 && number < 10) {
-    return '0' + number;
-  }
-  if (number < 0 && number > -10) {
-    return '-0' + Math.abs(number);
-  }
-  return number;
+  return (Math.abs(number) < 10 ? '0' : '') + Math.abs(number);
 }
 
 @Component({
@@ -19,7 +13,7 @@ function pad2(number) {
 
 export class AlertComponent implements OnInit, OnDestroy {
   @Input() alert: any;
-  colorType = 'info';
+  status = 'INPROGRESS';
   timeText = '';
   progressValue = 100;
 
@@ -48,14 +42,14 @@ export class AlertComponent implements OnInit, OnDestroy {
     if (moment() < this.starttime) {
       const duration = moment.duration(this.starttime.diff(moment(), 'seconds'), 'seconds');
       if (duration.days() !== 0) {
-        this.timeText = 'Start: ' + pad2(duration.days()) + 'd ' + pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm '
+        this.timeText = pad2(duration.days()) + 'd ' + pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm '
           + pad2(duration.seconds()) + 's';
       } else if (duration.hours() !== 0) {
-        this.timeText = 'Start: ' + pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
+        this.timeText = pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
       } else {
-        this.timeText = 'Start: ' + pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
+        this.timeText = pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
       }
-      this.colorType = 'secondary';
+      this.status = 'START';
     } else if (this.starttime < moment()) {
       const duration = moment.duration(this.endtime.diff(moment(), 'seconds'), 'seconds');
       if (duration.days() !== 0) {
@@ -70,10 +64,9 @@ export class AlertComponent implements OnInit, OnDestroy {
         this.timeText = pad2(duration.seconds()) + 's';
       }
       if (this.endtime < moment()) {
-        this.colorType = 'danger';
-        this.timeText = 'Expired: ' + this.timeText;
+        this.status = 'EXPIRED';
       } else {
-        this.colorType = 'success';
+        this.status = 'INPROGRESS';
 
         const full = this.starttime.diff(this.endtime, 'seconds');
         const long = this.starttime.diff(moment(), 'seconds');

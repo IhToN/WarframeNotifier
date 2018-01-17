@@ -1,19 +1,43 @@
-<div class="title col row">
-  <div class="node col-6">{{ alert.mission.node }}</div>
-  <div class="level col-6">{{ 'ALERTS.LEVEL' | translate}}
+<div class="title col-12 row">
+  <div class="node col-6 order-1">{{ alert.mission.node }}</div>
+  <div class="type col-6 order-2 order-sm-3">{{ alert.mission.type }}
+    <div class="icon archwing" *ngIf="alert.mission.archwingRequired"><img
+      src="assets/img/wings.png" placement="top" ngbTooltip="{{'ALERTS.ARCHWING' | translate}}"
+      alt="{{'ALERTS.ARCHWING' | translate}}"/></div>
+    <div class="icon nightmare" *ngIf="alert.mission.nightmare"><img
+      src="assets/img/nightmare.png" placement="top" ngbTooltip="{{'ALERTS.NIGHTMARE' | translate}}"
+      alt="{{'ALERTS.NIGHTMARE' | translate}}"/></div>
+  </div>
+  <div class="level col-6 order-3 order-sm-2">{{ 'ALERTS.LEVEL' | translate}}
     {{ alert.mission.minEnemyLevel }} - {{ alert.mission.maxEnemyLevel }}
   </div>
-  <div class="type col-6">{{ alert.mission.type }}
-    <span class="icon archwing" *ngIf="alert.mission.archwingRequired" title="{{'ALERTS.ARCHWING' | translate}}"><img
-      src="assets/img/wings.png"/></span>
-    <span class="icon nightmare" *ngIf="alert.mission.nightmare" title="{{'ALERTS.ARCHWING' | translate}}"><img
-      src="assets/img/nightmare.png"/></span>
-  </div>
-  <div class="faction col-6">{{ alert.mission.faction }}</div>
+  <div class="faction col-6 order-4">{{ alert.mission.faction }}</div>
 </div>
-<div class="reward col-4 text-right">{{ alert.mission.reward.toString() }}</div>
-<p class="col-12">
-  <ngb-progressbar type="{{colorType}}" [value]="progressValue" [striped]="true" [animated]="true">
+<div class="rewards mb-1 col-12 text-right">
+  <!--
+  {'helmet': alert.rewardTypes.includes('helmet'), 'endo': alert.rewardTypes.includes('endo'), 'nightmare': alert.rewardTypes.includes('nightmare')}
+  -->
+  <div class="badge badge-pill reward {{alert.rewardTypes.toString()}}"
+       *ngFor="let reward of alert.mission.reward.items">
+    {{ reward }}
+    <div class="icon"><img src="{{alert.mission.reward.thumbnail}}"/></div>
+  </div>
+  <div class="badge badge-pill reward {{alert.rewardTypes.toString()}}"
+       *ngFor="let reward of alert.mission.reward.countedItems"
+       [ngClass]="">
+    <span *ngIf="reward.count > 1">{{reward.count}}</span> {{ reward.type }}
+    <div class="icon"><img src="{{alert.mission.reward.thumbnail}}"/></div>
+  </div>
+  <div class="badge badge-pill reward credits">{{ alert.mission.reward.credits | number: .0 }}cr
+    <div class="icon">
+      <img src="https://i.imgur.com/JCKyUXJ.png"/></div>
+  </div>
+  <div class="badge badge-pill reward {{status.toLowerCase()}}" [translate]="'ALERTS.'+status"
+       [translateParams]="{time: this.timeText}">&nbsp;
+  </div>
+</div>
+<!-- <p class="col-12">
+  <ngb-progressbar type="{{status}}" [value]="progressValue" [striped]="true" [animated]="true">
     <i>{{ this.timeText }}</i>
   </ngb-progressbar>
-</p>
+</p> -->

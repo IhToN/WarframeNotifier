@@ -3,7 +3,7 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1 class="display-3" translate>BODY.TITLE</h1>
+      <h1 class="" translate>BODY.TITLE</h1>
       <p [innerHTML]="'BODY.DESCRIPTION' | translate"></p>
       <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>
     </div>
@@ -15,12 +15,10 @@
       <div class="col-12 col-md-6">
         <h2 translate>ALERTS.TITLE</h2>
         <app-alerts *ngIf="wfData" [alerts]="wfData.alerts"></app-alerts>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
       <div class="col-12 col-md-6">
         <h2 translate="">NEWS.TITLE</h2>
         <app-news *ngIf="wfData" [news]="wfData.news.reverse()"></app-news>
-        <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
       </div>
     </div>
 

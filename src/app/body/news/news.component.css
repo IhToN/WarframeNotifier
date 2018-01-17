@@ -1,6 +1,20 @@
+.new {
+  -webkit-display: flex;
+  -moz-display: flex;
+  -ms-display: flex;
+  -o-display: flex;
+  -khtml-display: flex;
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .image img {
   display: block;
   width: 100%;
+}
+
+.text .message {
+  line-height: 1rem;
 }
 
 .text .date {

@@ -23,7 +23,10 @@
     "TITLE": "Alerts",
     "LEVEL": "Enemy Lvl:",
     "ARCHWING": "Archwing Level",
-    "NIGHTMARE": "Nightmare Level"
+    "NIGHTMARE": "Nightmare Level",
+    "START": "Start: {{time}}",
+    "INPROGRESS": "{{time}}",
+    "EXPIRED": "Expired: -{{time}}"
   },
   "NEWS": {
     "TITLE": "News"
