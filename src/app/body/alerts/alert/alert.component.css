@@ -38,6 +38,11 @@
   padding-left: 1.5rem;
 }
 
+.reward.resource {
+  background-color: darkgoldenrod;
+  padding-left: 1.75rem;
+}
+
 .reward.helmet {
   background-color: darkcyan;
   padding-left: 1.75rem;
@@ -154,6 +159,7 @@
   left: 3px;
 }
 
+.reward.resource .icon,
 .reward.plastids .icon {
   max-width: 1.5rem;
   left: 3px;

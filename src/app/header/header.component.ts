@@ -20,14 +20,13 @@ export class HeaderComponent implements OnInit {
   searchField: any;
 
   constructor(public translate: TranslateService, public wfService: WarframeService, public ddService: DropDataService) {
-    this.ddService.dropdata$.subscribe((data) => {
-        this.dropdata = data; // And he have data here too!
-        console.log(this.dropdata);
-      }
-    );
   }
 
   ngOnInit() {
+    this.ddService.dropdata$.subscribe((data) => {
+        this.dropdata = data;
+      }
+    );
   }
 
   search = (text$: Observable<string>) =>
@@ -46,7 +45,7 @@ export class HeaderComponent implements OnInit {
           return p;
         }, [])
         .sort((a, b) => a.item > b.item)
-        .filter((v, pos, arr) => v.item.toLowerCase().indexOf(term.toLowerCase()) > -1)
+        .filter((elem, pos, arr) => elem.item.toLowerCase().indexOf(term.toLowerCase()) > -1)
         .slice(0, 10)
       );
 

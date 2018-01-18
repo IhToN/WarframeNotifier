@@ -26,6 +26,7 @@ import {Ng2Webstorage} from 'ngx-webstorage';
 import {DropDataService} from './drop-data.service';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {SearchComponent} from './search/search.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -34,7 +35,10 @@ export function HttpLoaderFactory(http: HttpClient) {
 // Se definen las rutas de la app. Cada una se corresponde con un componente
 const routes: Routes = [
   // La ruta '' indica la ruta por defecto (antiguo index.html)
-  {path: '', component: BodyComponent},
+  {path: 'home', component: BodyComponent},
+  {path: '', redirectTo: '/home', pathMatch: 'full'},
+  {path: 'search', component: SearchComponent},
+  {path: 'search/:itemName', component: SearchComponent},
   // Cualquier otra ruta no considerada en las entradas anteriores -> ERROR
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -54,7 +58,8 @@ const routes: Routes = [
     ConclaveChallengesComponent,
     FlashSalesComponent,
     AlertComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

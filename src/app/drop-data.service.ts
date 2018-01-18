@@ -24,13 +24,17 @@ export class DropDataService implements OnInit {
 
   constructor(private http: HttpClient, private translate: TranslateService) {
     this.dropdata$ = this.dropdata.asObservable();
-    this.fmtdrop = [];
-    this.http.get('https://drops.warframestat.us/data/all.json').subscribe(data => {
-      this.formatData(data);
-    });
+    this.requestData();
   }
 
   ngOnInit() {
+  }
+
+  requestData() {
+    this.http.get('https://drops.warframestat.us/data/all.json').subscribe(data => {
+      this.fmtdrop = [];
+      this.formatData(data);
+    });
   }
 
   formatData(data) {
