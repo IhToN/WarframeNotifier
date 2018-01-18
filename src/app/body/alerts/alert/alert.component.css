@@ -50,17 +50,22 @@
 
 .reward.nitain {
   background-color: cadetblue;
-  padding-left: 1.75em;
+  padding-left: 1.75rem;
 }
 
 .reward.morphics {
   background-color: lightskyblue;
-  padding-left: 1.85em;
+  padding-left: 1.85rem;
+}
+
+.reward.nanoSpores {
+  background-color: sandybrown;
+  padding-left: 1.75rem;
 }
 
 .reward.rubedo {
   background-color: firebrick;
-  padding-left: 1.75em;
+  padding-left: 1.75rem;
 }
 
 .reward.traces {
