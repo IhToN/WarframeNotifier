@@ -2,11 +2,14 @@ import {Component, Input, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {WarframeService} from '../warframe.service';
+import {routerTransition} from '../../router.animations';
 
 @Component({
   selector: 'app-body',
   templateUrl: './body.component.html',
-  styleUrls: ['./body.component.css']
+  styleUrls: ['./body.component.css'],
+  animations: [routerTransition()],
+  host: {'[@routerTransition]': ''}
 })
 export class BodyComponent implements OnInit {
 
