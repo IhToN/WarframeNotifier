@@ -38,7 +38,6 @@ const routes: Routes = [
   // Cualquier otra ruta no considerada en las entradas anteriores -> ERROR
   {path: '**', component: PageNotFoundComponent}
 ];
-export const routing = RouterModule.forRoot(routes);
 
 @NgModule({
   declarations: [
@@ -64,7 +63,7 @@ export const routing = RouterModule.forRoot(routes);
     HttpClientModule,
     Ng2Webstorage,
     NgbModule.forRoot(),
-    routing,
+    RouterModule.forRoot(routes),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
