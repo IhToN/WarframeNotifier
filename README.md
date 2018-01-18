@@ -17,7 +17,7 @@ Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app w
 
 Run `ng build --prod --base-href="https://YourUser.github.io/YourRepo/"` to prepare and build the project to be uploadable to your GitHub Pages. The build artifacts will be stored in the `dist/` directory.
 
-In this should use `ng build --prod --base-href="https://ihton.github.io/WarframeNotifier/"`
+In this case we should use `ng build --prod --base-href="https://ihton.github.io/WarframeNotifier/"`
 
 ## Further help
 
