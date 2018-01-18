@@ -125,7 +125,8 @@
 .reward.oxium .icon,
 .reward.traces .icon,
 .reward.skin .icon,
-.reward.catalyst .icon {
+.reward.catalyst .icon,
+.reward.morphics .icon {
   max-width: 1rem;
   left: 3px
 }
