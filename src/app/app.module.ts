@@ -25,6 +25,7 @@ import {WarframeService} from './warframe.service';
 import {Ng2Webstorage} from 'ngx-webstorage';
 import {DropDataService} from './drop-data.service';
 import {FormsModule} from '@angular/forms';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -58,11 +59,12 @@ export const routing = RouterModule.forRoot(routes);
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    routing,
-    Ng2Webstorage,
+    BrowserAnimationsModule,
     FormsModule,
+    HttpClientModule,
+    Ng2Webstorage,
     NgbModule.forRoot(),
+    routing,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -71,7 +73,7 @@ export const routing = RouterModule.forRoot(routes);
       }
     })
   ],
-  providers: [WarframeService, DropDataService],
+  providers: [DropDataService, WarframeService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
