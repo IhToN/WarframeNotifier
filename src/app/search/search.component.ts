@@ -16,20 +16,23 @@ export class SearchComponent implements OnInit, OnDestroy {
   ddsub: any;
   nmsub: any;
 
+  pagdata: any;
+
   itemname: string;
   page = 1;
   itemsperpage = 20;
 
   constructor(private route: ActivatedRoute, private ddService: DropDataService) {
     this.dropdata = [];
+    this.pagdata = [];
   }
 
   ngOnInit() {
     this.ddsub = this.ddService.dropdata$.subscribe((data) => {
         this.dropdata = data.filter(elem => elem.chance !== 0);
+        this.fillData();
       }
     );
-    this.ddService.requestData();
 
     this.nmsub = this.route.params.subscribe(params => {
       this.itemname = params['itemName'];
@@ -41,22 +44,8 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.nmsub.unsubscribe();
   }
 
-  getData() {
-    if (this.itemname) {
-      return this.dropdata.slice().reduce(function (p, c) {
-        if (!p.some(function (el) {
-            return el.item === c.item && el.place === c.place && el.rarity === c.rarity && el.chance === c.chance;
-          })) {
-          p.push(c);
-        }
-        return p;
-      }, []).filter(elem => elem.item.toLowerCase().includes(this.itemname.toLowerCase())).sort(this.sort_by('item', {
-        name: 'chance',
-        primer: parseFloat,
-        reverse: true
-      }));
-    }
-    return this.dropdata.slice().reduce(function (p, c) {
+  fillData() {
+    this.pagdata = this.dropdata.reduce(function (p, c) {
       if (!p.some(function (el) {
           return el.item === c.item && el.place === c.place && el.rarity === c.rarity && el.chance === c.chance;
         })) {
@@ -68,13 +57,20 @@ export class SearchComponent implements OnInit, OnDestroy {
       primer: parseFloat,
       reverse: true
     }));
+    if (this.itemname) {
+      this.pagdata = this.pagdata.filter(elem => elem.item.toLowerCase().includes(this.itemname.toLowerCase())).sort(this.sort_by('item', {
+        name: 'chance',
+        primer: parseFloat,
+        reverse: true
+      }));
+    }
   }
 
   getDataPaginated() {
     if (this.itemname) {
-      return this.dropdata ? this.getData().slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
+      return this.pagdata ? this.pagdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
     }
-    return this.dropdata ? this.getData().slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
+    return this.pagdata ? this.pagdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
   }
 
   // utility functions
