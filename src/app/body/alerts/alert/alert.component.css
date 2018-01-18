@@ -55,7 +55,7 @@
 
 .reward.morphics {
   background-color: lightskyblue;
-  padding-left: 1.75em;
+  padding-left: 1.85em;
 }
 
 .reward.rubedo {
@@ -125,8 +125,12 @@
 .reward.oxium .icon,
 .reward.traces .icon,
 .reward.skin .icon,
-.reward.catalyst .icon,
-.reward.morphics .icon {
+.reward.catalyst .icon {
   max-width: 1rem;
   left: 3px
+}
+
+.reward.morphics .icon {
+  max-width: 1.2rem;
+  left: 3px;
 }
