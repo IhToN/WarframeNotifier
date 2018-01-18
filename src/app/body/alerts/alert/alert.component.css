@@ -78,6 +78,11 @@
   padding-left: 1.5rem;
 }
 
+.reward.vauban {
+  background-color: slategrey;
+  padding-left: 1.5rem;
+}
+
 .reward.argonCrystal {
   background-color: darkorchid;
   padding-left: 1.5rem;
@@ -102,7 +107,8 @@
 }
 
 .reward.nightmare .icon,
-.reward.weapon .icon {
+.reward.weapon .icon,
+.reward.vauban .icon {
   max-width: 1rem;
   border-radius: 50%;
   overflow: hidden;
@@ -115,6 +121,6 @@
 .reward.traces .icon,
 .reward.skin .icon,
 .reward.catalyst .icon {
-  max-width: 1.1rem;
+  max-width: 1rem;
   left: 3px
 }

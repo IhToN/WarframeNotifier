@@ -23,6 +23,8 @@ import {RouterModule, Routes} from '@angular/router';
 import {PageNotFoundComponent} from './page-not-found/page-not-found.component';
 import {WarframeService} from './warframe.service';
 import {Ng2Webstorage} from 'ngx-webstorage';
+import {DropDataService} from './drop-data.service';
+import {FormsModule} from '@angular/forms';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -59,6 +61,7 @@ export const routing = RouterModule.forRoot(routes);
     HttpClientModule,
     routing,
     Ng2Webstorage,
+    FormsModule,
     NgbModule.forRoot(),
     TranslateModule.forRoot({
       loader: {
@@ -68,7 +71,7 @@ export const routing = RouterModule.forRoot(routes);
       }
     })
   ],
-  providers: [WarframeService],
+  providers: [WarframeService, DropDataService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -25,15 +25,22 @@
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-secondary" id="langPicker" ngbDropdownToggle translate>HEAD.LANG.SELECT</button>
           <div ngbDropdownMenu aria-labelledby="langPicker">
-            <button *ngFor="let lang of translate.getLangs()" class="dropdown-item" (click)="wfService.selectLanguage(lang)"
+            <button *ngFor="let lang of translate.getLangs()" class="dropdown-item"
+                    (click)="wfService.selectLanguage(lang)"
                     [translate]="'HEAD.LANG.'+lang.toUpperCase()" [disabled]="lang === wfService.language"></button>
           </div>
         </div>
       </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="{{ 'HEAD.SEARCH' | translate }}" aria-label="Search">
+      <input class="form-control mr-sm-2" type="text" placeholder="{{ 'HEAD.SEARCH' | translate }}"
+             [(ngModel)]="searchField" [ngModelOptions]="{standalone: true}" [ngbTypeahead]="search"
+             [inputFormatter]="formatter" [resultTemplate]="rt" aria-label="Search">
       <button class="btn btn-outline-success my-2 my-sm-0" type="submit" [translate]="'HEAD.SEARCH'"></button>
     </form>
   </div>
+
+  <ng-template #rt let-r="result" let-t="term">
+    {{ r.item }}
+  </ng-template>
 </nav>

@@ -16,7 +16,6 @@ export class NewsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.news);
   }
 
 
