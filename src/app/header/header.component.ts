@@ -34,7 +34,7 @@ export class HeaderComponent implements OnInit {
     text$
       .debounceTime(200)
       .distinctUntilChanged()
-      .map(term => term.length < 2 ? [] : this.dropdata.slice().sort((a, b) => a.item > b.item)
+      .map(term => term.length < 2 ? [] : this.dropdata.slice()
         .reduce(function (p, c) {
           // if the next object's id is not found in the output array
           // push the object into the output array
@@ -45,6 +45,7 @@ export class HeaderComponent implements OnInit {
           }
           return p;
         }, [])
+        .sort((a, b) => a.item > b.item)
         .filter((v, pos, arr) => v.item.toLowerCase().indexOf(term.toLowerCase()) > -1)
         .slice(0, 10)
       );
