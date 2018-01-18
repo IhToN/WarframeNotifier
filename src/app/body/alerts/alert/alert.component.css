@@ -58,7 +58,17 @@
   padding-left: 1.85rem;
 }
 
+.reward.gallium {
+  background-color: lightskyblue;
+  padding-left: 1.85rem;
+}
+
 .reward.nanoSpores {
+  background-color: saddlebrown;
+  padding-left: 1.75rem;
+}
+
+.reward.plastids {
   background-color: sandybrown;
   padding-left: 1.75rem;
 }
@@ -125,7 +135,6 @@
   left: 3px
 }
 
-.reward.credits .icon,
 .reward.argonCrystal .icon,
 .reward.oxium .icon,
 .reward.traces .icon,
@@ -135,7 +144,17 @@
   left: 3px
 }
 
+.reward.credits .icon,
 .reward.morphics .icon {
   max-width: 1.2rem;
+  left: 3px;
+}
+
+.reward.nanoSpores .icon {
+  left: 3px;
+}
+
+.reward.plastids .icon {
+  max-width: 1.5rem;
   left: 3px;
 }
