@@ -4,6 +4,7 @@ import {Subject} from 'rxjs/Subject';
 import {HttpClient} from '@angular/common/http';
 import * as WorldState from 'warframe-worldstate-parser';
 import {LocalStorage} from 'ngx-webstorage';
+import {TranslateService} from '@ngx-translate/core';
 
 @Injectable()
 export class WarframeService implements OnInit {
@@ -19,7 +20,7 @@ export class WarframeService implements OnInit {
 
   interval: any;
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private translate: TranslateService) {
     this.wfData$ = this.wfData.asObservable();
     this.interval = setInterval(() => {
       this.requestData();
@@ -36,6 +37,7 @@ export class WarframeService implements OnInit {
   }
 
   selectLanguage(language) {
+    this.translate.use(language);
     this.language = language;
   }
 

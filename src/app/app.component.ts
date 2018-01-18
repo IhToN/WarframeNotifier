@@ -17,7 +17,6 @@ export class AppComponent implements OnInit {
     /*const browserLang = translate.getBrowserLang();
     console.log('Browser Lang ' + browserLang);
     translate.use(translate.getLangs().includes(browserLang) ? browserLang : this.lang);*/
-    translate.use(wfService.language);
     wfService.selectLanguage(translate.currentLang);
   }
 

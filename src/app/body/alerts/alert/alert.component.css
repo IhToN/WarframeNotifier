@@ -88,6 +88,11 @@
   padding-left: 1.5rem;
 }
 
+.reward.catalyst {
+  background-color: cornflowerblue;
+  padding-left: 1.5rem;
+}
+
 .reward .icon {
   position: absolute;
   max-width: 1.75rem;
@@ -108,7 +113,8 @@
 .reward.argonCrystal .icon,
 .reward.oxium .icon,
 .reward.traces .icon,
-.reward.skin .icon {
+.reward.skin .icon,
+.reward.catalyst .icon {
   max-width: 1.1rem;
   left: 3px
 }

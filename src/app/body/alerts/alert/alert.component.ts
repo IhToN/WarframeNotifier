@@ -38,42 +38,39 @@ export class AlertComponent implements OnInit, OnDestroy {
     clearInterval(this.interval);
   }
 
+  formatTimeText(duration) {
+    if (duration.days() !== 0) {
+      return pad2(duration.days()) + 'd ' + pad2(Math.abs(duration.hours())) + 'h ' + pad2(Math.abs(duration.minutes())) + 'm '
+        + pad2(Math.abs(duration.seconds())) + 's';
+    } else if (duration.hours() !== 0) {
+      return pad2(duration.hours()) + 'h ' + pad2(Math.abs(duration.minutes())) + 'm '
+        + pad2(Math.abs(duration.seconds())) + 's';
+    } else if (duration.minutes() !== 0) {
+      return pad2(duration.minutes()) + 'm ' + pad2(Math.abs(duration.seconds())) + 's';
+    } else {
+      return pad2(duration.seconds()) + 's';
+    }
+  }
+
   updateTime() {
     if (moment() < this.starttime) {
       const duration = moment.duration(this.starttime.diff(moment(), 'seconds'), 'seconds');
-      if (duration.days() !== 0) {
-        this.timeText = pad2(duration.days()) + 'd ' + pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm '
-          + pad2(duration.seconds()) + 's';
-      } else if (duration.hours() !== 0) {
-        this.timeText = pad2(duration.hours()) + 'h ' + pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
-      } else {
-        this.timeText = pad2(duration.minutes()) + 'm ' + pad2(duration.seconds()) + 's';
-      }
+      this.timeText = this.formatTimeText(duration);
       this.status = 'START';
     } else if (this.starttime < moment()) {
       const duration = moment.duration(this.endtime.diff(moment(), 'seconds'), 'seconds');
-      if (duration.days() !== 0) {
-        this.timeText = pad2(duration.days()) + 'd ' + pad2(Math.abs(duration.hours())) + 'h ' + pad2(Math.abs(duration.minutes())) + 'm '
-          + pad2(Math.abs(duration.seconds())) + 's';
-      } else if (duration.hours() !== 0) {
-        this.timeText = pad2(duration.hours()) + 'h ' + pad2(Math.abs(duration.minutes())) + 'm '
-          + pad2(Math.abs(duration.seconds())) + 's';
-      } else if (duration.minutes() !== 0) {
-        this.timeText = pad2(duration.minutes()) + 'm ' + pad2(Math.abs(duration.seconds())) + 's';
-      } else if (duration.seconds() !== 0) {
-        this.timeText = pad2(duration.seconds()) + 's';
-      }
+      this.timeText = this.formatTimeText(duration);
       if (this.endtime < moment()) {
         this.status = 'EXPIRED';
       } else {
         this.status = 'INPROGRESS';
+      }
 
-        const full = this.starttime.diff(this.endtime, 'seconds');
-        const long = this.starttime.diff(moment(), 'seconds');
-        this.progressValue = Math.ceil(long * 100 / full);
-        if (this.progressValue < 30) {
-          this.progressValue = 30;
-        }
+      const full = this.starttime.diff(this.endtime, 'seconds');
+      const long = this.starttime.diff(moment(), 'seconds');
+      this.progressValue = Math.ceil(long * 100 / full);
+      if (this.progressValue < 30) {
+        this.progressValue = 30;
       }
     }
   }
