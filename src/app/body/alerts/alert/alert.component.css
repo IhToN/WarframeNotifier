@@ -53,6 +53,11 @@
   padding-left: 1.75em;
 }
 
+.reward.morphics {
+  background-color: lightskyblue;
+  padding-left: 1.75em;
+}
+
 .reward.rubedo {
   background-color: firebrick;
   padding-left: 1.75em;
