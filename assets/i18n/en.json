@@ -11,7 +11,8 @@
       "PS4": "PlayStation 4",
       "XB1": "Xbox One"
     },
-    "SEARCH": "Search"
+    "SEARCH": "Search",
+    "DROPTABLE": "Drops Table"
   },
   "BODY": {
     "TITLE": "Warframe Notifications",
@@ -31,5 +32,11 @@
   },
   "NEWS": {
     "TITLE": "News"
+  },
+  "SEARCH": {
+    "ITEM": "Item",
+    "PLACE": "Found in",
+    "RARITY": "Rarity",
+    "CHANCE": "Chance"
   }
 }
