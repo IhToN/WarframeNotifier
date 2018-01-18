@@ -6,6 +6,8 @@
     "ng": "ng",
     "start": "ng serve --open",
     "build": "ng build --prod",
+    "build ghpages": "ng build --prod --base-href=\"https://ihton.github.io/WarframeNotifier/\"",
+    "upload ghpages": "ngh",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
