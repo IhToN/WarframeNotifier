@@ -37,8 +37,8 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.ddsub.unsuscribe();
-    this.nmsub.unsuscribe();
+    this.ddsub.unsubscribe();
+    this.nmsub.unsubscribe();
   }
 
   getData() {

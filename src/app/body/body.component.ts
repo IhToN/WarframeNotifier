@@ -28,6 +28,6 @@ export class BodyComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.wfsub.unsuscribe();
+    this.wfsub.unsubscribe();
   }
 }
