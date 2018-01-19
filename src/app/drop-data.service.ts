@@ -3,9 +3,10 @@ import {TranslateService} from '@ngx-translate/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import {LocalStorage} from 'ngx-webstorage';
 
 @Injectable()
-export class DropDataService implements OnInit {
+export class DropDataService {
 
   /*
   *  data structure (in array)
@@ -17,24 +18,53 @@ export class DropDataService implements OnInit {
   *  }
   */
 
+  CURR_SCRIPT_VERSION = 1;
+  @LocalStorage('wfnVersion', 1)
+  wfnVersion: any;
+
   dropdata$: Observable<any>;
   private dropdata = new Subject<any>();
 
+  @LocalStorage('wfnDropData', {})
   fmtdrop: any;
+  @LocalStorage('wfnInfoData', {'hash': 'clem'})
+  infodata: any;
 
   constructor(private http: HttpClient, private translate: TranslateService) {
     this.dropdata$ = this.dropdata.asObservable();
-    this.requestData();
+
+    this.updateScript(this.wfnVersion);
   }
 
-  ngOnInit() {
+  updateScript(fromVersion, toVersion = this.CURR_SCRIPT_VERSION) {
+    if (fromVersion < toVersion) {
+      this.infodata = {'hash': 'clem'};
+    }
+    this.updateData();
+
+    this.wfnVersion = toVersion;
   }
 
-  requestData() {
+  updateData() {
+    const time = new Date().getTime();
+
+    this.http.get('https://drops.warframestat.us/data/info.json?' + time).subscribe(info => {
+      if (info['hash'] !== this.infodata.hash) {
+        this.getData();
+        this.infodata = info;
+      }
+    });
+  }
+
+  getData() {
     this.http.get('https://drops.warframestat.us/data/all.json').subscribe(data => {
       this.fmtdrop = [];
       this.formatData(data);
     });
+  }
+
+  requestData() {
+    this.dropdata.next(this.fmtdrop);
   }
 
   formatData(data) {
@@ -60,7 +90,13 @@ export class DropDataService implements OnInit {
     // cetus bounty rewards
     this.formatBounty(data.cetusBountyRewards);
 
-    this.dropdata.next(this.fmtdrop);
+    this.fmtdrop = this.fmtdrop.sort(this.sort_by('item', 'place', {
+      name: 'chance',
+      primer: parseFloat,
+      reverse: true
+    }));
+
+    this.requestData();
   }
 
   formatPlanets(missionRewards) {
@@ -186,4 +222,67 @@ export class DropDataService implements OnInit {
       }
     }
   }
+
+  // utility functions
+  default_cmp = function (a, b) {
+    if (a === b) {
+      return 0;
+    }
+    return a < b ? -1 : 1;
+  };
+
+  getCmpFunc = function (primer, reverse) {
+    const dfc = this.default_cmp; // closer in scope
+    let cmp = this.default_cmp;
+    if (primer) {
+      cmp = function (a, b) {
+        return dfc(primer(a), primer(b));
+      };
+    }
+    if (reverse) {
+      return function (a, b) {
+        return -1 * cmp(a, b);
+      };
+    }
+    return cmp;
+  };
+
+  // actual implementation
+  sort_by = function (...args) {
+    const fields = [];
+    const n_fields = args.length;
+    let field, name, cmp;
+
+    // preprocess sorting options
+    for (let i = 0; i < n_fields; i++) {
+      field = args[i];
+      if (typeof field === 'string') {
+        name = field;
+        cmp = this.default_cmp;
+      } else {
+        name = field.name;
+        cmp = this.getCmpFunc(field.primer, field.reverse);
+      }
+      fields.push({
+        name: name,
+        cmp: cmp
+      });
+    }
+
+    // final comparison function
+    return function (A, B) {
+      let fname, result;
+      for (let i = 0; i < n_fields; i++) {
+        result = 0;
+        field = fields[i];
+        fname = field.name;
+
+        result = field.cmp(A[fname], B[fname]);
+        if (result !== 0) {
+          break;
+        }
+      }
+      return result;
+    };
+  };
 }

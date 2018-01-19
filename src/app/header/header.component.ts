@@ -5,7 +5,9 @@ import {DropDataService} from '../drop-data.service';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/merge';
 import {Router} from '@angular/router';
 
 @Component({
@@ -19,6 +21,9 @@ export class HeaderComponent implements OnInit {
   dropdata: any;
 
   searchField: any;
+  searching = false;
+  searchFailed = false;
+  hideSearchingWhenUnsubscribed = new Observable(() => () => this.searching = false);
 
   constructor(private router: Router, public translate: TranslateService,
               public wfService: WarframeService, public ddService: DropDataService) {
@@ -35,6 +40,7 @@ export class HeaderComponent implements OnInit {
     text$
       .debounceTime(200)
       .distinctUntilChanged()
+      .do(() => this.searching = true)
       .map(term => term.length < 2 ? [] : this.dropdata.slice()
         .reduce(function (p, c) {
           // if the next object's id is not found in the output array
@@ -49,7 +55,8 @@ export class HeaderComponent implements OnInit {
         .sort((a, b) => a.item > b.item)
         .filter((elem, pos, arr) => elem.item.toLowerCase().indexOf(term.toLowerCase()) > -1)
         .slice(0, 10)
-      );
+      ).do(() => this.searching = false)
+      .merge(this.hideSearchingWhenUnsubscribed);
 
   formatter = (x: { name: string }) => x.name;
 

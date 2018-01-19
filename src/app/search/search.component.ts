@@ -29,14 +29,14 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.ddsub = this.ddService.dropdata$.subscribe((data) => {
-        this.dropdata = data.filter(elem => elem.chance !== 0);
-        this.fillData();
+        this.fillData(data.filter(elem => elem.chance !== 0));
       }
     );
     this.nmsub = this.route.params.subscribe(params => {
       this.itemname = params['itemName'];
     });
     if (this.dropdata.length <= 0) {
+      console.log('requesting data');
       this.ddService.requestData();
     }
   }
@@ -46,97 +46,26 @@ export class SearchComponent implements OnInit, OnDestroy {
     this.nmsub.unsubscribe();
   }
 
-  fillData() {
-    this.dropdata = this.dropdata.reduce(function (p, c) {
+  fillData(data) {
+    this.dropdata = data.reduce(function (p, c) {
       if (!p.some(function (el) {
           return el.item === c.item && el.place === c.place && el.rarity === c.rarity;
         })) {
         p.push(c);
       }
       return p;
-    }, []).sort(this.sort_by('item', {
-      name: 'chance',
-      primer: parseFloat,
-      reverse: true
-    }));
+    }, []);
     if (this.itemname) {
       this.dropdata = this.dropdata.filter(elem => elem.item.toLowerCase().includes(this.itemname.toLowerCase()) ||
-        elem.place.toLowerCase().includes(this.itemname.toLowerCase()))
-        .sort(this.sort_by('item', 'place', {
-          name: 'chance',
-          primer: parseFloat,
-          reverse: true
-        }));
+        elem.place.toLowerCase().includes(this.itemname.toLowerCase()));
+    }
+
+    for (let i = 1; i <= this.dropdata.length / 2; i++) {
+      this.pagdata[i] = this.dropdata.slice(this.itemsperpage * (i - 1), this.itemsperpage * i);
     }
   }
 
   getDataPaginated() {
-    if (this.itemname) {
-      return this.dropdata ? this.dropdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
-    }
-    return this.dropdata ? this.dropdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
+    return this.pagdata[this.page];
   }
-
-  // utility functions
-  default_cmp = function (a, b) {
-    if (a === b) {
-      return 0;
-    }
-    return a < b ? -1 : 1;
-  };
-
-  getCmpFunc = function (primer, reverse) {
-    const dfc = this.default_cmp; // closer in scope
-    let cmp = this.default_cmp;
-    if (primer) {
-      cmp = function (a, b) {
-        return dfc(primer(a), primer(b));
-      };
-    }
-    if (reverse) {
-      return function (a, b) {
-        return -1 * cmp(a, b);
-      };
-    }
-    return cmp;
-  };
-
-  // actual implementation
-  sort_by = function (...args) {
-    const fields = [];
-    const n_fields = args.length;
-    let field, name, cmp;
-
-    // preprocess sorting options
-    for (let i = 0; i < n_fields; i++) {
-      field = args[i];
-      if (typeof field === 'string') {
-        name = field;
-        cmp = this.default_cmp;
-      } else {
-        name = field.name;
-        cmp = this.getCmpFunc(field.primer, field.reverse);
-      }
-      fields.push({
-        name: name,
-        cmp: cmp
-      });
-    }
-
-    // final comparison function
-    return function (A, B) {
-      let fname, result;
-      for (let i = 0; i < n_fields; i++) {
-        result = 0;
-        field = fields[i];
-        fname = field.name;
-
-        result = field.cmp(A[fname], B[fname]);
-        if (result !== 0) {
-          break;
-        }
-      }
-      return result;
-    };
-  };
 }

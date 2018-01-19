@@ -1,6 +1,4 @@
 import {Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {HttpClient} from '@angular/common/http';
-import {ActivatedRoute} from '@angular/router';
 import {WarframeService} from '../warframe.service';
 import {slideToLeft} from '../../router.animations';
 
