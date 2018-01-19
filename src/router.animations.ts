@@ -3,7 +3,14 @@ import {trigger, animate, style, transition} from '@angular/animations';
 export function slideToRight() {
   return trigger('routerTransition', [
     transition(':enter', [
-      style({position: 'fixed', width: '100%', transform: 'translateX(-100%)', 'z-index': '99999'}),
+      style({
+        position: 'fixed',
+        width: '100%',
+        height: '100%',
+        'background-color': '#FEFEFE',
+        transform: 'translateX(-100%)',
+        'z-index': '99999'
+      }),
       animate('0.5s ease-in-out', style({transform: 'translateX(0%)'}))
     ]),
     transition(':leave', [
@@ -16,7 +23,7 @@ export function slideToRight() {
 export function slideToLeft() {
   return trigger('routerTransition', [
     transition(':enter', [
-      style({position: 'fixed', width: '100%', transform: 'translateX(100%)', 'z-index': '99999'}),
+      style({position: 'fixed', width: '100%', 'background-color': '#FEFEFE', transform: 'translateX(100%)', 'z-index': '99999'}),
       animate('0.5s ease-in-out', style({transform: 'translateX(0%)'}))
     ]),
     transition(':leave', [
@@ -29,7 +36,7 @@ export function slideToLeft() {
 export function slideToBottom() {
   return trigger('routerTransition', [
     transition(':enter', [
-      style({position: 'fixed', width: '100%', transform: 'translateY(-100%)', 'z-index': '99999'}),
+      style({position: 'fixed', width: '100%', 'background-color': '#FEFEFE', transform: 'translateY(-100%)', 'z-index': '99999'}),
       animate('0.5s ease-in-out', style({transform: 'translateY(0%)'}))
     ]),
     transition(':leave', [
@@ -42,7 +49,7 @@ export function slideToBottom() {
 export function slideToTop() {
   return trigger('routerTransition', [
     transition(':enter', [
-      style({position: 'fixed', width: '100%', transform: 'translateY(100%)', 'z-index': '99999'}),
+      style({position: 'fixed', width: '100%', 'background-color': '#FEFEFE', transform: 'translateY(100%)', 'z-index': '99999'}),
       animate('0.5s ease-in-out', style({transform: 'translateY(0%)'}))
     ]),
     transition(':leave', [

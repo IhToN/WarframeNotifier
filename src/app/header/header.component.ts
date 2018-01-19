@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/debounceTime';
 import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/map';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -19,7 +20,8 @@ export class HeaderComponent implements OnInit {
 
   searchField: any;
 
-  constructor(public translate: TranslateService, public wfService: WarframeService, public ddService: DropDataService) {
+  constructor(private router: Router, public translate: TranslateService,
+              public wfService: WarframeService, public ddService: DropDataService) {
   }
 
   ngOnInit() {
@@ -50,4 +52,8 @@ export class HeaderComponent implements OnInit {
       );
 
   formatter = (x: { name: string }) => x.name;
+
+  selectItem(event: any) {
+    this.router.navigate(['/single/' + event.item.item.toLowerCase()]);
+  }
 }

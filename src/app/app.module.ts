@@ -27,6 +27,7 @@ import {DropDataService} from './drop-data.service';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchComponent} from './search/search.component';
+import { SingleComponent } from './single/single.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -39,6 +40,8 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'search', component: SearchComponent},
   {path: 'search/:itemName', component: SearchComponent},
+  {path: 'single', redirectTo: '/search', pathMatch: 'full'},
+  {path: 'single/:itemName', component: SingleComponent},
   // Cualquier otra ruta no considerada en las entradas anteriores -> ERROR
   {path: '**', component: PageNotFoundComponent}
 ];
@@ -59,7 +62,8 @@ const routes: Routes = [
     FlashSalesComponent,
     AlertComponent,
     PageNotFoundComponent,
-    SearchComponent
+    SearchComponent,
+    SingleComponent
   ],
   imports: [
     BrowserModule,

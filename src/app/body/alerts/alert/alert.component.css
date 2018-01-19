@@ -123,6 +123,11 @@
   padding-left: 1.5rem;
 }
 
+.reward.aura {
+  background-color: yellowgreen;
+  padding-left: 1.5rem;
+}
+
 .reward .icon {
   position: absolute;
   max-width: 1.75rem;
@@ -133,8 +138,10 @@
 
 .reward.nightmare .icon,
 .reward.weapon .icon,
-.reward.vauban .icon {
+.reward.vauban .icon,
+.reward.aura .icon{
   max-width: 1rem;
+  max-height: 1rem;
   border-radius: 50%;
   overflow: hidden;
   left: 3px

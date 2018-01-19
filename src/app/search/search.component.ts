@@ -33,10 +33,12 @@ export class SearchComponent implements OnInit, OnDestroy {
         this.fillData();
       }
     );
-
     this.nmsub = this.route.params.subscribe(params => {
       this.itemname = params['itemName'];
     });
+    if (this.dropdata.length <= 0) {
+      this.ddService.requestData();
+    }
   }
 
   ngOnDestroy() {
@@ -45,9 +47,9 @@ export class SearchComponent implements OnInit, OnDestroy {
   }
 
   fillData() {
-    this.pagdata = this.dropdata.reduce(function (p, c) {
+    this.dropdata = this.dropdata.reduce(function (p, c) {
       if (!p.some(function (el) {
-          return el.item === c.item && el.place === c.place && el.rarity === c.rarity && el.chance === c.chance;
+          return el.item === c.item && el.place === c.place && el.rarity === c.rarity;
         })) {
         p.push(c);
       }
@@ -58,19 +60,21 @@ export class SearchComponent implements OnInit, OnDestroy {
       reverse: true
     }));
     if (this.itemname) {
-      this.pagdata = this.pagdata.filter(elem => elem.item.toLowerCase().includes(this.itemname.toLowerCase())).sort(this.sort_by('item', {
-        name: 'chance',
-        primer: parseFloat,
-        reverse: true
-      }));
+      this.dropdata = this.dropdata.filter(elem => elem.item.toLowerCase().includes(this.itemname.toLowerCase()) ||
+        elem.place.toLowerCase().includes(this.itemname.toLowerCase()))
+        .sort(this.sort_by('item', 'place', {
+          name: 'chance',
+          primer: parseFloat,
+          reverse: true
+        }));
     }
   }
 
   getDataPaginated() {
     if (this.itemname) {
-      return this.pagdata ? this.pagdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
+      return this.dropdata ? this.dropdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
     }
-    return this.pagdata ? this.pagdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
+    return this.dropdata ? this.dropdata.slice(this.itemsperpage * (this.page - 1), this.itemsperpage * this.page) : [];
   }
 
   // utility functions

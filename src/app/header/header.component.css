@@ -2,3 +2,9 @@
   display: block;
   max-height: 3rem;
 }
+
+a.term {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
