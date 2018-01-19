@@ -21,8 +21,11 @@ export class WarframeService implements OnInit {
   interval: any;
 
   constructor(private http: HttpClient, private translate: TranslateService) {
-    this.wfData$ = this.wfData.asObservable();
+    translate.addLangs(['en', 'es']);
+    translate.setDefaultLang('en');
     this.translate.use(this.language);
+
+    this.wfData$ = this.wfData.asObservable();
     this.interval = setInterval(() => {
       this.requestData();
     }, 60 * 1000);

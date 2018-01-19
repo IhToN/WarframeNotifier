@@ -10,14 +10,7 @@ import {LocalStorage} from 'ngx-webstorage';
 })
 export class AppComponent implements OnInit {
 
-  constructor(public translate: TranslateService, private wfService: WarframeService) {
-    translate.addLangs(['en', 'es']);
-    translate.setDefaultLang('en');
-
-    /*const browserLang = translate.getBrowserLang();
-    console.log('Browser Lang ' + browserLang);
-    translate.use(translate.getLangs().includes(browserLang) ? browserLang : this.lang);*/
-    wfService.selectLanguage(translate.currentLang);
+  constructor() {
   }
 
   ngOnInit(): void {
