@@ -10,3 +10,20 @@ body {
 .dropdown-item:disabled {
   cursor: auto;
 }
+
+.bg-dark {
+  background-color: #343a40 !important;
+}
+
+.btn {
+  border-width: 1px !important;
+}
+
+.jumbotron {
+  background-color: #e9ecef;
+}
+.form-control {
+  padding: 0.375rem 0.75rem;
+  line-height: 1.5;
+  background-clip: padding-box;
+}
