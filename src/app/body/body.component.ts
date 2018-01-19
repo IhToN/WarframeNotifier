@@ -2,7 +2,7 @@ import {Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {ActivatedRoute} from '@angular/router';
 import {WarframeService} from '../warframe.service';
-import {routerTransition, slideToLeft} from '../../router.animations';
+import {slideToLeft} from '../../router.animations';
 
 @Component({
   selector: 'app-body',
@@ -17,7 +17,8 @@ export class BodyComponent implements OnInit, OnDestroy {
   wfsub: any;
 
   // Inject HttpClient into your component or service.
-  constructor(private wfService: WarframeService) {}
+  constructor(private wfService: WarframeService) {
+  }
 
   ngOnInit(): void {
     this.wfsub = this.wfService.wfData$.subscribe((data) => {
