@@ -1,7 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {DropDataService} from '../drop-data.service';
 import {slideToLeft} from '../../router.animations';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -22,7 +22,7 @@ export class SearchComponent implements OnInit, OnDestroy {
   page = 1;
   itemsperpage = 20;
 
-  constructor(private route: ActivatedRoute, private ddService: DropDataService) {
+  constructor(private route: ActivatedRoute, private router: Router, private ddService: DropDataService) {
     this.dropdata = [];
     this.pagdata = [];
   }
@@ -34,9 +34,9 @@ export class SearchComponent implements OnInit, OnDestroy {
     );
     this.nmsub = this.route.params.subscribe(params => {
       this.itemname = params['itemName'];
+      this.ddService.requestData();
     });
     if (this.dropdata.length <= 0) {
-      console.log('requesting data');
       this.ddService.requestData();
     }
   }

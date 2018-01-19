@@ -13,11 +13,17 @@
     <!-- Example row of columns -->
     <div class="row">
       <div class="col-12 col-md-6">
-        <h2 translate>ALERTS.TITLE</h2>
+        <div class="d-flex justify-content-flex-start align-items-center">
+          <h2 class="h2-responsive" translate>ALERTS.TITLE</h2>
+          <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
+        </div>
         <app-alerts *ngIf="wfData" [alerts]="wfData.alerts"></app-alerts>
       </div>
       <div class="col-12 col-md-6">
-        <h2 translate="">NEWS.TITLE</h2>
+        <div class="d-flex justify-content-flex-start align-items-center">
+          <h2 class="h2-responsive" translate>NEWS.TITLE</h2>
+          <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
+        </div>
         <app-news *ngIf="wfData" [news]="wfData.news"></app-news>
       </div>
     </div>

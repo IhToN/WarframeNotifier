@@ -19,6 +19,7 @@ export class HeaderComponent implements OnInit {
 
   platforms = ['pc', 'ps4', 'xb1'];
   dropdata: any;
+  ddsub: any;
 
   searchField: any;
   searching = false;
@@ -27,13 +28,28 @@ export class HeaderComponent implements OnInit {
 
   constructor(private router: Router, public translate: TranslateService,
               public wfService: WarframeService, public ddService: DropDataService) {
+    this.dropdata = [];
   }
 
   ngOnInit() {
-    this.ddService.dropdata$.subscribe((data) => {
-        this.dropdata = data;
+    this.ddsub = this.ddService.dropdata$.subscribe((data) => {
+        this.fillData(data.filter(elem => elem.chance !== 0));
       }
     );
+    if (this.dropdata.length <= 0) {
+      this.ddService.requestData();
+    }
+  }
+
+  fillData(data) {
+    this.dropdata = data.reduce(function (p, c) {
+      if (!p.some(function (el) {
+          return el.item === c.item;
+        })) {
+        p.push(c);
+      }
+      return p;
+    }, []);
   }
 
   search = (text$: Observable<string>) =>
@@ -42,17 +58,6 @@ export class HeaderComponent implements OnInit {
       .distinctUntilChanged()
       .do(() => this.searching = true)
       .map(term => term.length < 2 ? [] : this.dropdata.slice()
-        .reduce(function (p, c) {
-          // if the next object's id is not found in the output array
-          // push the object into the output array
-          if (!p.some(function (el) {
-              return el.item === c.item;
-            })) {
-            p.push(c);
-          }
-          return p;
-        }, [])
-        .sort((a, b) => a.item > b.item)
         .filter((elem, pos, arr) => elem.item.toLowerCase().indexOf(term.toLowerCase()) > -1)
         .slice(0, 10)
       ).do(() => this.searching = false)

@@ -1,19 +1,19 @@
 <main role="main">
   <div class="container">
     <div class="row">
-      <div class="col-12">
-        <table class="table table-striped">
-          <thead>
-          <tr>
-            <th scope="col" translate>SEARCH.ITEM</th>
-            <th scope="col" translate>SEARCH.PLACE</th>
-            <th scope="col" translate>SEARCH.RARITY</th>
-            <th scope="col" translate>SEARCH.CHANCE</th>
+      <div class="col-12 table-responsive">
+        <table class="table table-hover table-striped">
+          <thead class="primary-color">
+          <tr class="text-white">
+            <th class="font-weight-bold" scope="col" translate>SEARCH.ITEM</th>
+            <th class="font-weight-bold" scope="col" translate>SEARCH.PLACE</th>
+            <th class="font-weight-bold" scope="col" translate>SEARCH.RARITY</th>
+            <th class="font-weight-bold" scope="col" translate>SEARCH.CHANCE</th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let item of getDataPaginated()">
-            <th scope="row" [innerHTML]="item.item"></th>
+            <th class="font-weight-bold" scope="row" [innerHTML]="item.item"></th>
             <td [innerHTML]="item.place"></td>
             <td>{{item.rarity}}</td>
             <td>{{item.chance}}</td>
@@ -21,7 +21,7 @@
           </tbody>
         </table>
       </div>
-      <ngb-pagination class="mx-auto" [collectionSize]="this.pagdata.length+1" [(page)]="page" [maxSize]="5"
+      <ngb-pagination class="mx-auto" [circle]="true" [collectionSize]="this.pagdata.length+1" [(page)]="page" [maxSize]="5"
                       [rotate]="true" [boundaryLinks]="true"></ngb-pagination>
     </div>
   </div>

@@ -11,8 +11,9 @@ import {slideToLeft} from '../../router.animations';
 })
 export class BodyComponent implements OnInit, OnDestroy {
 
-  wfData: any;
+  wfData: { alerts: [''], news: [''] };
   wfsub: any;
+  cont = { alerts: 0, news: 0 };
 
   // Inject HttpClient into your component or service.
   constructor(private wfService: WarframeService) {
@@ -21,6 +22,8 @@ export class BodyComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.wfsub = this.wfService.wfData$.subscribe((data) => {
         this.wfData = data; // And he have data here too!
+        this.cont.alerts = this.wfData.alerts.length;
+        this.cont.news = this.wfData.news.length;
       }
     );
     this.wfService.requestData();
