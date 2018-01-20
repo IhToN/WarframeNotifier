@@ -26,6 +26,9 @@
     },
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - La marca registrada y los derechos de Warframe son propiedad de Digital Extremes."
   },
+  "EVENTS": {
+    "TITLE": "Eventos"
+  },
   "ALERTS": {
     "TITLE": "Alertas",
     "LEVEL": "Nivel:",
