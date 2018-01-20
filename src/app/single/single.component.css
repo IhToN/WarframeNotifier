@@ -2,3 +2,17 @@
   width: 300px;
   height: 200px;
 }
+
+:host /deep/ .pg-danger .progress-bar {
+  background-color: #CC0000 !important;
+}
+:host /deep/ .pg-warning .progress-bar {
+  background-color: #FF8800 !important;
+}
+:host /deep/ .pg-primary .progress-bar {
+  background-color: #0d47a1 !important;
+}
+:host /deep/ .pg-success .progress-bar {
+  background-color: #007E33 !important;
+}
+

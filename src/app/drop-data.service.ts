@@ -227,7 +227,9 @@ export class DropDataService {
   }
 
   getItemImage(itemName) {
-    const itemThumbs = ItemData.itemThumbs.filter(elem => elem.name.toLowerCase().includes(itemName.toLowerCase()))[0];
+    const itemThumbs = ItemData.itemThumbs.sort((a, b) => a.name.length - b.name.length).filter(elem => elem.name.toLowerCase().includes(
+      itemName.toLowerCase()
+        .replace(' blueprint', '')))[0];
     return itemThumbs ? 'http://content.warframe.com/MobileExport' + itemThumbs.textureLocation : 'unknown';
   }
 

@@ -41,7 +41,6 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
             reverse: true
           }, 'item')), 'place');
         this.title = this.itemdropdata.length > 0 ? this.itemdropdata[0].item : '';
-        console.log(this.title, this.itemdropdata, this.cagedata);
         this.image = this.ddService.getItemImage(this.itemname);
       }
     );

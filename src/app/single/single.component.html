@@ -51,7 +51,12 @@
         <tr *ngFor="let item of itemdropdata">
           <td class="py-0" [innerHTML]="item.place" scope="row"></td>
           <td class="py-0">{{item.rarity}}
-            <ngb-progressbar type="success" [value]="item.chance" height="6px"></ngb-progressbar>
+            <ngb-progressbar [ngClass]="{
+                    'pg-danger': item.chance >= 0 && item.chance < 10,
+                    'pg-warning': item.chance >= 10 && item.chance < 15,
+                    'pg-primary': item.chance >= 15 && item.chance < 20,
+                    'pg-success': item.chance >= 20}" type="success" [value]="item.chance" height="6px">
+            </ngb-progressbar>
           </td>
           <td class="py-0">{{item.chance}}%</td>
         </tr>
