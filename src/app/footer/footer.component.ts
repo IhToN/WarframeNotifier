@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {SessionStorage} from 'ngx-webstorage';
 
 @Component({
   selector: 'app-footer',
@@ -7,9 +8,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  @SessionStorage('wfnCookie', false)
+  cookiesAccepted: boolean;
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
 
+  acceptCookies() {
+    this.cookiesAccepted = true;
+  }
 }

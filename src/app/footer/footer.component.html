@@ -1,6 +1,12 @@
+<div *ngIf="!cookiesAccepted" class="alert alert-info alert-dismissible fade show fixed-bottom mb-0 rounded-0"
+     role="alert">
+  <span class="text" [innerHTML]="'FOOTER.COOKIE.MESSAGE' | translate"></span>
+  <button class="btn btn-outline-primary btn-sm my-0 float-right" type="submit" (click)="acceptCookies()" data-dismiss="alert"
+          aria-label="Close" [innerHTML]="'FOOTER.COOKIE.BUTTON' | translate"></button>
+</div>
+
 <!--Footer-->
 <footer class="page-footer stylish-color-dark">
-
   <!--Footer Links-->
   <div class="container">
     <div class="row py-3 d-flex align-items-center">
@@ -21,9 +27,12 @@
         <!--Social buttons-->
         <div class="social-section text-center text-md-left">
           <ul>
-            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="https://atalgaba.com" target="_blank"><i class="fas fa-user"></i></a></li>
-            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="https://twitter.com/IhToN" target="_blank"><i class="fab fa-twitter"></i></a></li>
-            <li><a class="btn-floating btn-sm rgba-white-slight mr-xl-4" href="https://www.linkedin.com/in/atalgaba/" target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
+            <li><a class="btn btn-floating btn-sm rgba-white-slight mr-xl-4 px-2 py-1" href="https://atalgaba.com" target="_blank"><i
+              class="fas fa-user"></i></a></li>
+            <li><a class="btn btn-floating btn-sm rgba-white-slight mr-xl-4 px-2 py-1" href="https://twitter.com/IhToN"
+                   target="_blank"><i class="fab fa-twitter"></i></a></li>
+            <li><a class="btn btn-floating btn-sm rgba-white-slight mr-xl-4 px-2 py-1" href="https://www.linkedin.com/in/atalgaba/"
+                   target="_blank"><i class="fab fa-linkedin-in"></i></a></li>
           </ul>
         </div>
         <!--/.Social buttons-->

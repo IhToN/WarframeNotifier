@@ -12,13 +12,18 @@
       "XB1": "Xbox One"
     },
     "SEARCH": "Search",
-    "DROPTABLE": "Drop Table"
+    "DROPTABLE": "Drop Table",
+    "MESSAGE": "<i>Warframe Notifications</i> is a fan site not associated with <i>Digital Extremes</i>."
   },
   "BODY": {
-    "TITLE": "Warframe Notifications",
+    "TITLE": "Warframe Notifier",
     "DESCRIPTION": "<i>Warframe Notifications</i> is a fan site not associated with <i>Digital Extremes</i>"
   },
   "FOOTER": {
+    "COOKIE": {
+      "MESSAGE": "<i>Warframe Notifier</i> use cookies and web storage to save your preferences.",
+      "BUTTON": "Accept cookie usage"
+    },
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
   },
   "ALERTS": {
