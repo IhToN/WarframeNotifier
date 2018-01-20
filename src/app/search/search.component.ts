@@ -29,7 +29,9 @@ export class SearchComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this.ddsub = this.ddService.dropdata$.subscribe((data) => {
-        this.fillData(data.filter(elem => elem.chance !== 0));
+        setTimeout(() => {
+          this.fillData(data.filter(elem => elem.chance !== 0));
+        }, 1500);
       }
     );
     this.nmsub = this.route.params.subscribe(params => {

@@ -51,13 +51,13 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
       this.itemname = params['itemName'];
       this.ddService.requestData();
     });
-    if (this.itemdropdata.length <= 0 && this.cagedata.length <= 0) {
+    if (this.itemdropdata.length <= 0) {
       this.ddService.requestData();
     }
   }
 
   ngAfterViewChecked() {
-    if (this.itemdropdata.length <= 0 && this.cagedata.length <= 0) {
+    if (this.itemdropdata.length <= 0) {
       this.router.navigate(['/search/' + this.itemname]);
     }
   }

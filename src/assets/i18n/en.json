@@ -12,7 +12,7 @@
       "XB1": "Xbox One"
     },
     "SEARCH": "Search",
-    "DROPTABLE": "Drops Table"
+    "DROPTABLE": "Drop Table"
   },
   "BODY": {
     "TITLE": "Warframe Notifications",
@@ -34,6 +34,12 @@
     "TITLE": "News"
   },
   "SEARCH": {
+    "ITEM": "Item",
+    "PLACE": "Found in",
+    "RARITY": "Rarity",
+    "CHANCE": "Chance"
+  },
+  "SINGLE": {
     "ITEM": "Item",
     "PLACE": "Found in",
     "RARITY": "Rarity",
