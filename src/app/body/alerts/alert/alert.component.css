@@ -93,6 +93,11 @@
   padding-left: 1.75rem;
 }
 
+.reward.circuits {
+  background-color: peru;
+  padding-left: 1.75rem;
+}
+
 .reward.traces {
   background-color: dodgerblue;
   padding-left: 1.5rem;
@@ -179,7 +184,8 @@
 .reward.credits .icon,
 .reward.morphics .icon,
 .reward.tellurium .icon,
-.reward.polymerBundle .icon {
+.reward.polymerBundle .icon,
+.reward.circuits .icon{
   max-width: 1.2rem;
   left: 3px;
 }
