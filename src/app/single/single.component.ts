@@ -1,6 +1,6 @@
 import {AfterViewChecked, Component, OnDestroy, OnInit} from '@angular/core';
 import {slideToLeft} from '../../router.animations';
-import {ActivatedRoute, Router} from '@angular/router';
+import {ActivatedRoute, NavigationEnd, Router} from '@angular/router';
 import {DropDataService} from '../drop-data.service';
 
 @Component({
@@ -24,6 +24,17 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
   constructor(private route: ActivatedRoute, private router: Router, private ddService: DropDataService) {
     this.itemdropdata = [];
     this.cagedata = [];
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+        window.scrollTo(0, 0);
+      }
+    });
   }
 
   ngOnInit() {
@@ -42,9 +53,10 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
             reverse: true
           }, 'item')), 'place');
         this.title = this.itemdropdata.length > 0 ? this.itemdropdata[0].item : '';
-        this.image = this.ddService.getItemImage(this.itemname);
-        this.description = this.ddService.getItemDescription(this.itemname);
-        console.log('itemdesc', this.description);
+
+        const itemData = this.ddService.getItemData(this.itemname);
+        this.image = itemData['thumbnail'];
+        this.description = itemData['description'];
       }
     );
     this.nmsub = this.route.params.subscribe(params => {

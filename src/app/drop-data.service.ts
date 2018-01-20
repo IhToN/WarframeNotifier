@@ -226,17 +226,16 @@ export class DropDataService {
     }
   }
 
-  getItemImage(itemName) {
-    const itemThumbs = ItemData.itemThumbs.sort((a, b) => a.name.length - b.name.length).filter(elem => elem.name.toLowerCase().includes(
+  getItemData(itemName) {
+    const ret = {};
+    const item = ItemData.itemThumbs.sort((a, b) => a.name.length - b.name.length).filter(elem => elem.name.toLowerCase().includes(
       itemName.toLowerCase()
         .replace(' blueprint', '')))[0];
-    return itemThumbs ? 'http://content.warframe.com/MobileExport' + itemThumbs.textureLocation : 'unknown';
-  }
 
-  getItemDescription(itemName) {
-    const items = ItemData.itemThumbs.sort((a, b) => a.name.length - b.name.length).filter(elem => elem.name.toLowerCase().includes(
-      itemName.toLowerCase()))[0];
-    return items.hasOwnProperty('description') ? items.description : '';
+    ret['thumbnail'] = item ? 'http://content.warframe.com/MobileExport' + item.textureLocation : 'unknown';
+    ret['description'] = item.hasOwnProperty('description') ? item.description : '';
+
+    return ret;
   }
 
   // utility functions
