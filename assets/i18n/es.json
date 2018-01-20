@@ -32,5 +32,17 @@
   },
   "NEWS": {
     "TITLE": "Noticias"
+  },
+  "SEARCH": {
+    "ITEM": "Objeto",
+    "PLACE": "Se encuentra en",
+    "RARITY": "Rareza",
+    "CHANCE": "Probabilidad"
+  },
+  "SINGLE": {
+    "ITEM": "Objeto",
+    "PLACE": "Se encuentra en",
+    "RARITY": "Rareza",
+    "CHANCE": "Probabilidad"
   }
 }
