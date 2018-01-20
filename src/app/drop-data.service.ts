@@ -233,6 +233,12 @@ export class DropDataService {
     return itemThumbs ? 'http://content.warframe.com/MobileExport' + itemThumbs.textureLocation : 'unknown';
   }
 
+  getItemDescription(itemName) {
+    const items = ItemData.itemThumbs.sort((a, b) => a.name.length - b.name.length).filter(elem => elem.name.toLowerCase().includes(
+      itemName.toLowerCase()))[0];
+    return items.hasOwnProperty('description') ? items.description : '';
+  }
+
   // utility functions
   default_cmp = function (a, b) {
     if (a === b) {

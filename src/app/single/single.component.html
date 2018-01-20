@@ -10,8 +10,7 @@
           <!--Title-->
           <h1 class="card-title">{{title}}</h1>
           <!--Text-->
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-            content.</p>
+          <p class="card-text" *ngIf="description.length>0" [innerHTML]="description"></p>
         </div>
       </div>
 

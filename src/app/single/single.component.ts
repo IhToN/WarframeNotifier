@@ -19,6 +19,7 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   title: string;
   image: string;
+  description: string;
 
   constructor(private route: ActivatedRoute, private router: Router, private ddService: DropDataService) {
     this.itemdropdata = [];
@@ -42,6 +43,8 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
           }, 'item')), 'place');
         this.title = this.itemdropdata.length > 0 ? this.itemdropdata[0].item : '';
         this.image = this.ddService.getItemImage(this.itemname);
+        this.description = this.ddService.getItemDescription(this.itemname);
+        console.log('itemdesc', this.description);
       }
     );
     this.nmsub = this.route.params.subscribe(params => {
