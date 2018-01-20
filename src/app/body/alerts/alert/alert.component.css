@@ -183,11 +183,15 @@
 
 .reward.credits .icon,
 .reward.morphics .icon,
-.reward.tellurium .icon,
+.reward.tellurium .icon{
+  max-width: 1.2rem;
+  left: 3px;
+}
+
 .reward.polymerBundle .icon,
 .reward.circuits .icon{
   max-width: 1.2rem;
-  left: 3px;
+  left: 53px;
 }
 
 .reward.nanoSpores .icon {
