@@ -27,7 +27,8 @@
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
   },
   "EVENTS": {
-    "TITLE": "Events"
+    "TITLE": "Events",
+    "REMAINING": "Remaining: {{remaining}}%"
   },
   "ALERTS": {
     "TITLE": "Alerts",

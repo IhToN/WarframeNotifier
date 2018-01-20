@@ -111,7 +111,7 @@ export class DropDataService {
         const location = missionRewards[planetName][locationName];
 
         if (Array.isArray(location.rewards)) {
-          const placeName = `${planetName}/${locationName} (<b>${location.gameMode}</b>)`;
+          const placeName = `${planetName}/${locationName} (<strong>${location.gameMode}</strong>)`;
 
           for (const reward of location.rewards) {
             this.fmtdrop.push({
@@ -123,7 +123,7 @@ export class DropDataService {
           }
         } else {
           for (const rotationName of Object.keys(location.rewards)) {
-            const placeName = `${planetName}/${locationName} (<b>${location.gameMode}</b>), Rotation ${rotationName}`;
+            const placeName = `${planetName}/${locationName} (<strong>${location.gameMode}</strong>), Rotation ${rotationName}`;
 
             for (const reward of location.rewards[rotationName]) {
               this.fmtdrop.push({

@@ -5,3 +5,31 @@
 .card-header {
   cursor: pointer;
 }
+
+:host /deep/ .pg-danger .progress,
+:host /deep/ .pg-warning .progress,
+:host /deep/ .pg-primary .progress,
+:host /deep/ .pg-success .progress {
+  background-color: #fefefe !important;
+  margin-bottom: 0.25rem !important;
+}
+
+:host /deep/ .pg-danger .progress-bar {
+  background-color: #CC0000 !important;
+  min-width: 25%;
+}
+
+:host /deep/ .pg-warning .progress-bar {
+  background-color: #FF8800 !important;
+  min-width: 25%;
+}
+
+:host /deep/ .pg-primary .progress-bar {
+  background-color: #0d47a1 !important;
+  min-width: 25%;
+}
+
+:host /deep/ .pg-success .progress-bar {
+  background-color: #007E33 !important;
+  min-width: 25%;
+}
