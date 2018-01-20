@@ -1,4 +1,4 @@
-<nav class="navbar scrolling-navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+<nav class="navbar scrolling-navbar navbar-expand-lg navbar-dark fixed-top bg-dark">
   <a class="navbar-brand" [routerLink]="['/home']" title="Warframe Notifier">
     <img src="assets/img/wficon.png" height="30" class="d-inline-block align-top" alt="">
     Warframe Notifier
@@ -11,13 +11,13 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="nav navbar-nav mr-auto">
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item text-center" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/home']" translate>HEAD.HOME</a>
       </li>
-      <li class="nav-item" routerLinkActive="active">
+      <li class="nav-item text-center" routerLinkActive="active">
         <a class="nav-link" [routerLink]="['/search']" translate>HEAD.DROPTABLE</a>
       </li>
-      <li class="nav-item my-2 dropdown">
+      <li class="nav-item text-center my-2">
         <div ngbDropdown class="d-inline-block">
           <button class="btn btn-outline-primary btn-sm my-0 waves-effect" id="platPicker" ngbDropdownToggle
                   [translate]="'HEAD.PLATFORM.'+wfService.platform.toUpperCase()"></button>
@@ -26,10 +26,11 @@
                     [translate]="'HEAD.PLATFORM.'+plat.toUpperCase()" [disabled]="plat === wfService.platform"></button>
           </div>
         </div>
-      </li>
-      <li class="nav-item my-2 dropdown">
+
         <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-secondary btn-sm my-0 waves-effect" id="langPicker" ngbDropdownToggle translate>HEAD.LANG.SELECT</button>
+          <button class="btn btn-outline-secondary btn-sm my-0 waves-effect" id="langPicker" ngbDropdownToggle
+                  translate>HEAD.LANG.SELECT
+          </button>
           <div ngbDropdownMenu aria-labelledby="langPicker">
             <button *ngFor="let lang of translate.getLangs()" class="dropdown-item"
                     (click)="wfService.selectLanguage(lang)"
@@ -38,8 +39,8 @@
         </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input type="text" class="form-control mr-sm-2" [class.is-invalid]="searchFailed"
+    <form class="form-inline justify-content-center justify-content-lg-end my-2 my-lg-0">
+      <input type="text" class="form-control mr-2 search" [class.is-invalid]="searchFailed"
              placeholder="{{ 'HEAD.SEARCH' | translate }}"
              [(ngModel)]="searchField" [ngModelOptions]="{standalone: true}" [ngbTypeahead]="search"
              [inputFormatter]="formatter" [resultTemplate]="rt" (selectItem)="selectItem($event)" aria-label="Search">
@@ -51,6 +52,6 @@
   </div>
 
   <ng-template #rt let-r="result" let-t="term">
-    {{ r.item }}
+      {{ r.item }}
   </ng-template>
 </nav>

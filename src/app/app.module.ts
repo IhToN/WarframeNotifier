@@ -27,7 +27,9 @@ import {DropDataService} from './drop-data.service';
 import {FormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {SearchComponent} from './search/search.component';
-import { SingleComponent } from './single/single.component';
+import {SingleComponent} from './single/single.component';
+import {NgPipesModule} from 'ngx-pipes';
+import {KeyPipe} from './key.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -64,7 +66,8 @@ const routes: Routes = [
     AlertComponent,
     PageNotFoundComponent,
     SearchComponent,
-    SingleComponent
+    SingleComponent,
+    KeyPipe
   ],
   imports: [
     BrowserModule,
@@ -73,6 +76,7 @@ const routes: Routes = [
     HttpClientModule,
     Ng2Webstorage,
     NgbModule.forRoot(),
+    NgPipesModule,
     RouterModule.forRoot(routes),
     TranslateModule.forRoot({
       loader: {

@@ -4,10 +4,10 @@ import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
 import {LocalStorage} from 'ngx-webstorage';
+import * as ItemData from 'warframe-item-data';
 
 @Injectable()
 export class DropDataService {
-  apiurl = 'https://atalgaba.com/api.php?url=';
 
   /*
   *  data structure (in array)
@@ -36,7 +36,6 @@ export class DropDataService {
   constructor(private http: HttpClient, private translate: TranslateService) {
     this.dropdata$ = this.dropdata.asObservable();
 
-    this.loadItemNodes();
     this.updateScript(this.wfnVersion);
   }
 
@@ -227,20 +226,9 @@ export class DropDataService {
     }
   }
 
-  loadItemNodes() {
-    const langJSON = require('warframe-worldstate-data').languages;
-    this.itemNodes = [];
-    for (const node in langJSON) {
-      if (langJSON.hasOwnProperty(node)) {
-        this.itemNodes[langJSON[node]['value']] = node;
-      }
-    }
-  }
-
-
   getItemImage(itemName) {
-    // todo: use warframe-item-data
-    return [];
+    const itemThumbs = ItemData.itemThumbs.filter(elem => elem.name.toLowerCase().includes(itemName.toLowerCase()))[0];
+    return itemThumbs ? 'http://content.warframe.com/MobileExport' + itemThumbs.textureLocation : 'unknown';
   }
 
   // utility functions

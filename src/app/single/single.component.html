@@ -1,5 +1,63 @@
-<div class="container">
+<div class="container single">
   <div class="row">
-    <div class="title col-12">{{title}}</div>
+    <div class="col-12 col-md-6 col-lg-4">
+      <div class="card mb-4">
+        <!--Card image-->
+        <img class="img-thumbnail img-fluid d-block mx-auto mt-2" src="{{image}}" alt="{{title}}">
+
+        <!--Card content-->
+        <div class="card-body">
+          <!--Title-->
+          <h1 class="card-title">{{title}}</h1>
+          <!--Text-->
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+            content.</p>
+        </div>
+      </div>
+
+      <div *ngFor="let pair of cagedata | keys: {'intact': 1, 'exceptional': 2, 'flawless': 3, 'radiant': 4}"
+           class="card mb-2">
+        <!--Card content-->
+        <div class="card-body" data-toggle="collapse" [attr.data-target]="'#'+pair.id" aria-expanded="true">
+          <!--Title-->
+          <h2 class="card-title">{{pair.key}}</h2>
+          <!--Text-->
+          <ul class="pl-0 collapse" id="{{pair.id}}">
+            <li class="list-group-item d-flex justify-content-between align-items-center"
+                *ngFor="let item of pair.value">
+              {{item.item}}
+              <span class="badge badge-pill"
+                    [ngClass]="{
+                    'badge-danger': item.chance >= 0 && item.chance < 10,
+                    'badge-warning': item.chance >= 10 && item.chance < 15,
+                    'badge-primary': item.chance >= 15 && item.chance < 20,
+                    'badge-success': item.chance >= 20}">
+                    {{item.chance}}%</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-12 col-md-6 col-lg-8 table-responsive">
+      <table class="table table-hover table-striped">
+        <thead class="primary-color">
+        <tr class="text-white">
+          <th class="font-weight-bold py-1" scope="col" translate>Droped In</th>
+          <th class="font-weight-bold py-1" scope="col" translate>Rarity</th>
+          <th class="font-weight-bold py-1" scope="col" translate>Chance</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of itemdropdata">
+          <td class="py-0" [innerHTML]="item.place" scope="row"></td>
+          <td class="py-0">{{item.rarity}}
+            <ngb-progressbar type="success" [value]="item.chance" height="6px"></ngb-progressbar>
+          </td>
+          <td class="py-0">{{item.chance}}%</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+

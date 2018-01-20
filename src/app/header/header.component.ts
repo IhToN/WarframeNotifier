@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import {TranslateService} from '@ngx-translate/core';
 import {WarframeService} from '../warframe.service';
 import {DropDataService} from '../drop-data.service';
