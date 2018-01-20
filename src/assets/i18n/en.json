@@ -28,6 +28,7 @@
   },
   "EVENTS": {
     "TITLE": "Events",
+    "LEVEL": "Lvl. {{minlevel}}-{{maxlevel}}",
     "REMAINING": "Remaining: {{remaining}}%"
   },
   "ALERTS": {
