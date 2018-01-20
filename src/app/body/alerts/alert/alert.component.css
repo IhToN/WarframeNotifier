@@ -123,6 +123,11 @@
   padding-left: 1.5rem;
 }
 
+.reward.neuralSensors {
+  background-color: peru;
+  padding-left: 1.5rem;
+}
+
 .reward.catalyst {
   background-color: cornflowerblue;
   padding-left: 1.5rem;
