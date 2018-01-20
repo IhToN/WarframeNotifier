@@ -7,6 +7,7 @@ import {LocalStorage} from 'ngx-webstorage';
 
 @Injectable()
 export class DropDataService {
+  apiurl = 'https://atalgaba.com/api.php?url=';
 
   /*
   *  data structure (in array)
@@ -30,9 +31,12 @@ export class DropDataService {
   @LocalStorage('wfnInfoData', {'hash': 'clem'})
   infodata: any;
 
+  itemNodes: any;
+
   constructor(private http: HttpClient, private translate: TranslateService) {
     this.dropdata$ = this.dropdata.asObservable();
 
+    this.loadItemNodes();
     this.updateScript(this.wfnVersion);
   }
 
@@ -221,6 +225,22 @@ export class DropDataService {
         }
       }
     }
+  }
+
+  loadItemNodes() {
+    const langJSON = require('warframe-worldstate-data').languages;
+    this.itemNodes = [];
+    for (const node in langJSON) {
+      if (langJSON.hasOwnProperty(node)) {
+        this.itemNodes[langJSON[node]['value']] = node;
+      }
+    }
+  }
+
+
+  getItemImage(itemName) {
+    // todo: use warframe-item-data
+    return [];
   }
 
   // utility functions
