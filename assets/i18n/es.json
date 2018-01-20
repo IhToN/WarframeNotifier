@@ -12,13 +12,18 @@
       "XB1": "Xbox One"
     },
     "SEARCH": "Buscar",
-    "DROPTABLE": "Tabla de Drops"
+    "DROPTABLE": "Tabla de Drops",
+    "MESSAGE": "<i>Warframe Notifications</i> es una web fan y no está asociada con <i>Digital Extremes</i>"
   },
   "BODY": {
-    "TITLE": "Warframe Notifications",
+    "TITLE": "Warframe Notifier",
     "DESCRIPTION": "<i>Warframe Notifications</i> es una web fan y no está asociada con <i>Digital Extremes</i>"
   },
   "FOOTER": {
+    "COOKIE": {
+      "MESSAGE": "<i>Warframe Notifier</i> usa cookies and web storage para guardar tus preferencias.",
+      "BUTTON": "Aceptar uso de cookies"
+    },
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - La marca registrada y los derechos de Warframe son propiedad de Digital Extremes."
   },
   "ALERTS": {
