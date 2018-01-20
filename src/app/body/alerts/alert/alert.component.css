@@ -73,6 +73,11 @@
   padding-left: 1.75rem;
 }
 
+.reward.tellurium {
+  background-color: brown;
+  padding-left: 1.5rem;
+}
+
 .reward.plastids {
   background-color: sandybrown;
   padding-left: 1.75rem;
@@ -139,7 +144,7 @@
 .reward.nightmare .icon,
 .reward.weapon .icon,
 .reward.vauban .icon,
-.reward.aura .icon{
+.reward.aura .icon {
   max-width: 1rem;
   max-height: 1rem;
   border-radius: 50%;
@@ -157,7 +162,8 @@
 }
 
 .reward.credits .icon,
-.reward.morphics .icon {
+.reward.morphics .icon,
+.reward.tellurium .icon {
   max-width: 1.2rem;
   left: 3px;
 }
