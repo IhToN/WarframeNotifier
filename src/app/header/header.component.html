@@ -23,7 +23,13 @@
                   [translate]="'HEAD.PLATFORM.'+wfService.platform.toUpperCase()"></button>
           <div ngbDropdownMenu aria-labelledby="platPicker">
             <button *ngFor="let plat of platforms" class="dropdown-item" (click)="wfService.selectPlatform(plat)"
-                    [translate]="'HEAD.PLATFORM.'+plat.toUpperCase()" [disabled]="plat === wfService.platform"></button>
+                    [disabled]="plat === wfService.platform">
+              <i [ngClass]="{'fas fa-desktop': plat === 'pc',
+              'fab fa-playstation': plat === 'ps4',
+              'fab fa-xbox': plat === 'xb1'
+              }"></i>
+              {{'HEAD.PLATFORM.'+plat.toUpperCase() | translate}}
+            </button>
           </div>
         </div>
 
@@ -52,7 +58,7 @@
   </div>
 
   <ng-template #rt let-r="result" let-t="term">
-      {{ r.item }}
+    {{ r.item }}
   </ng-template>
 </nav>
 
