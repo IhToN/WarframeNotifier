@@ -11,20 +11,27 @@
   -->
   <div class="container">
     <!-- Example row of columns -->
+    <div *ngIf="cont.events > 0" class="row">
+      <div class="jumbotron py-2 col-12">
+        <h2 class="h2-responsive text-center mb-0" translate>EVENTS.TITLE</h2>
+        <hr class="my-1">
+        <app-events [events]="wfData.events"></app-events>
+      </div>
+    </div>
     <div class="row">
-      <div class="col-12 col-md-6">
+      <div *ngIf="cont.alerts > 0" class="col-12 col-md-6">
         <div class="d-flex justify-content-flex-start align-items-center">
           <h2 class="h2-responsive" translate>ALERTS.TITLE</h2>
           <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
         </div>
-        <app-alerts *ngIf="wfData" [alerts]="wfData.alerts"></app-alerts>
+        <app-alerts [alerts]="wfData.alerts"></app-alerts>
       </div>
-      <div class="col-12 col-md-6">
+      <div *ngIf="cont.news > 0" class="col-12 col-md-6">
         <div class="d-flex justify-content-flex-start align-items-center">
           <h2 class="h2-responsive" translate>NEWS.TITLE</h2>
           <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
         </div>
-        <app-news *ngIf="wfData" [news]="wfData.news"></app-news>
+        <app-news [news]="wfData.news"></app-news>
       </div>
     </div>
 

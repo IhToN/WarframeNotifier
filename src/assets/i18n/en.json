@@ -26,6 +26,9 @@
     },
     "COPYRIGHT": "&copy; Warframe Notifier 2017 - Warframe content and materials are trademarks and copyrights of Digital Extremes."
   },
+  "EVENTS": {
+    "TITLE": "Events"
+  },
   "ALERTS": {
     "TITLE": "Alerts",
     "LEVEL": "Enemy Lvl:",

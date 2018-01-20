@@ -1,0 +1,7 @@
+.collapse.show {
+  display: flex;
+}
+
+.card-header {
+  cursor: pointer;
+}

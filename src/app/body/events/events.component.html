@@ -1,0 +1,19 @@
+<div class="container-fluid" *ngFor="let event of events; let isLast = last;">
+  <h3 class="h3-responsive">{{event.description}}</h3>
+  <div class="row">
+    <div class="col-12 col-md-6" *ngFor="let job of event.jobs">
+      <div class="card" data-toggle="collapse" [attr.data-target]="'#'+job.id" aria-expanded="false">
+        <div class="card-header deep-purple white-text">
+          {{job.type}}
+        </div>
+        <div id={{job.id}} class="card-body row collapse">
+          <div class="col-6 mb-1" *ngFor="let reward of job.rewardPool">
+            {{reward}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <hr *ngIf="!isLast" class="my-1">
+</div>
