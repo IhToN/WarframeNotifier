@@ -178,8 +178,8 @@
 
 .reward.credits .icon,
 .reward.morphics .icon,
-.reward.tellurium .icon
-.reward.polymerBundle .icon{
+.reward.tellurium .icon,
+.reward.polymerBundle .icon {
   max-width: 1.2rem;
   left: 3px;
 }
