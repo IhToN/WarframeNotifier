@@ -43,7 +43,6 @@ const routes: Routes = [
   {path: '', redirectTo: '/home', pathMatch: 'full'},
   {path: 'search', component: SearchComponent},
   {path: 'search/:itemName', component: SearchComponent},
-  {path: 'search/:itemName', component: SearchComponent},
   {path: 'single', redirectTo: '/search', pathMatch: 'full'},
   {path: 'single/:itemName', component: SingleComponent},
   // Cualquier otra ruta no considerada en las entradas anteriores -> ERROR
