@@ -20,10 +20,12 @@
   vertical-align: middle;
   background-color: #777;
   position: relative;
+  padding-left: 1.75rem;
 }
 
 .reward.start {
   background-color: darkorange;
+  padding-left: 0;
 }
 
 .reward.inprogress {
@@ -32,6 +34,7 @@
 
 .reward.expired {
   background-color: darkred;
+  padding-left: 0;
 }
 
 .reward.credits {
@@ -40,22 +43,18 @@
 
 .reward.resource {
   background-color: darkgoldenrod;
-  padding-left: 1.75rem;
 }
 
 .reward.helmet {
   background-color: darkcyan;
-  padding-left: 1.75rem;
 }
 
 .reward.endo {
   background-color: darkkhaki;
-  padding-left: 1.75rem;
 }
 
 .reward.nitain {
   background-color: cadetblue;
-  padding-left: 1.75rem;
 }
 
 .reward.morphics {
@@ -70,7 +69,6 @@
 
 .reward.nanoSpores {
   background-color: saddlebrown;
-  padding-left: 1.75rem;
 }
 
 .reward.tellurium {
@@ -80,22 +78,18 @@
 
 .reward.plastids {
   background-color: sandybrown;
-  padding-left: 1.75rem;
 }
 
 .reward.rubedo {
   background-color: firebrick;
-  padding-left: 1.75rem;
 }
 
 .reward.polymerBundle {
   background-color: slateblue;
-  padding-left: 1.75rem;
 }
 
 .reward.circuits {
   background-color: peru;
-  padding-left: 1.75rem;
 }
 
 .reward.traces {
@@ -140,7 +134,6 @@
 
 .reward.alloyPlate {
   background-color: lightslategray;
-  padding-left: 1.75rem;
 }
 
 .reward.catalyst {
@@ -191,7 +184,7 @@
 .reward.polymerBundle .icon,
 .reward.circuits .icon{
   max-width: 1.2rem;
-  left: 53px;
+  left: 5px;
 }
 
 .reward.nanoSpores .icon {
