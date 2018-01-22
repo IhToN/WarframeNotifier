@@ -25,17 +25,17 @@
 
 .reward.start {
   background-color: darkorange;
-  padding-left: 0;
+  padding-left: .6em;
 }
 
 .reward.inprogress {
   background-color: green;
-  padding-left: 0;
+  padding-left: .6em;
 }
 
 .reward.expired {
   background-color: darkred;
-  padding-left: 0;
+  padding-left: .6em;
 }
 
 .reward.credits {
