@@ -233,7 +233,7 @@ export class DropDataService {
         .replace(' blueprint', '')))[0];
 
     ret['thumbnail'] = item ? 'http://content.warframe.com/MobileExport' + item.textureLocation : 'unknown';
-    ret['description'] = item.hasOwnProperty('description') ? item.description : '';
+    ret['description'] = item ? item.hasOwnProperty('description') ? item.description : '' : '';
 
     return ret;
   }
