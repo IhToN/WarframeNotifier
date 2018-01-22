@@ -30,6 +30,7 @@
 
 .reward.inprogress {
   background-color: green;
+  padding-left: 0;
 }
 
 .reward.expired {
