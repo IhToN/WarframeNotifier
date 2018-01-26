@@ -1,17 +1,30 @@
-.single .img-thumbnail{
+.single .img-thumbnail {
   width: 300px;
   height: 200px;
+}
+
+.card:not(:first-child) {
+  cursor: pointer;
+}
+
+.card li:hover, .card li:focus, .card li:active {
+  background-color: rgba(0, 0, 0, .1);
+  -webkit-transition: .5s;
+  transition: .5s;
 }
 
 :host /deep/ .pg-danger .progress-bar {
   background-color: #CC0000 !important;
 }
+
 :host /deep/ .pg-warning .progress-bar {
   background-color: #FF8800 !important;
 }
+
 :host /deep/ .pg-primary .progress-bar {
   background-color: #0d47a1 !important;
 }
+
 :host /deep/ .pg-success .progress-bar {
   background-color: #007E33 !important;
 }

@@ -31,6 +31,7 @@ import {SingleComponent} from './single/single.component';
 import {NgPipesModule} from 'ngx-pipes';
 import {KeyPipe} from './key.pipe';
 import { EventsComponent } from './body/events/events.component';
+import { DayNightCycleComponent } from './body/day-night-cycle/day-night-cycle.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, 'assets/i18n/');
@@ -68,7 +69,8 @@ const routes: Routes = [
     SearchComponent,
     SingleComponent,
     KeyPipe,
-    EventsComponent
+    EventsComponent,
+    DayNightCycleComponent
   ],
   imports: [
     BrowserModule,

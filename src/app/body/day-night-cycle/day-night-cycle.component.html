@@ -1,0 +1,42 @@
+<div class="card-group">
+  <div class="col-12 col-md-6 card px-0 earth">
+    <div class="card-header h4">Earth</div>
+    <div class="card-body">
+      <div class="c100 center p{{earthProgress}}">
+        <span class="circle-fill"
+              [ngClass]="{'day-icon': earthData['isDay'], 'night-icon': !earthData['isDay']}"></span>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!earthData['isDay']" class="card-footer text-center text-muted">
+      {{'DNCYCLE.DAYIN' | translate: {remaining: earthTimeText} }}
+    </div>
+    <div *ngIf="earthData['isDay']" class="card-footer text-center text-muted">
+      {{'DNCYCLE.NIGHTIN' | translate: {remaining: earthTimeText} }}
+    </div>
+  </div>
+
+  <div class="col-12 col-md-6 card px-0 cetus">
+    <div class="card-header h4">Cetus</div>
+    <div class="card-body">
+      <div class="c100 center p{{cetusProgress}}">
+        <span class="circle-fill"
+              [ngClass]="{'day-icon': cetusData['isDay'], 'night-icon': !cetusData['isDay']}"></span>
+        <div class="slice">
+          <div class="bar"></div>
+          <div class="fill"></div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="!cetusData['isDay']" class="card-footer text-center text-muted">
+      {{'DNCYCLE.DAYIN' | translate: {remaining: cetusTimeText} }}
+    </div>
+    <div *ngIf="cetusData['isDay']" class="card-footer text-center text-muted">
+      {{'DNCYCLE.NIGHTIN' | translate: {remaining: cetusTimeText} }}
+    </div>
+  </div>
+</div>

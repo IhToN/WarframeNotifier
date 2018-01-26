@@ -43,6 +43,11 @@
   "NEWS": {
     "TITLE": "News"
   },
+  "DNCYCLE": {
+    "TITLE": "Day/Night Cycle",
+    "DAYIN": "Dawn in {{remaining}}",
+    "NIGHTIN": "Dusk in {{remaining}}"
+  },
   "SEARCH": {
     "ITEM": "Item",
     "PLACE": "Found in",

@@ -8,6 +8,24 @@
   flex-wrap: wrap;
 }
 
+@media (min-width: 576px) {
+
+}
+
+@media (min-width: 768px) {
+  .image {
+    max-height: 83px;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 992px) {
+  .image {
+    max-height: 44px;
+    overflow: hidden;
+  }
+}
+
 .image img {
   display: block;
   width: 100%;

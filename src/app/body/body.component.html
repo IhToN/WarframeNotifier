@@ -33,9 +33,13 @@
         </div>
         <app-news [news]="wfData.news"></app-news>
       </div>
+      <div *ngIf="wfData" class="col-12 col-md-6">
+        <div class="d-flex justify-content-flex-start align-items-center">
+          <h2 class="h2-responsive" translate>DNCYCLE.TITLE</h2>
+        </div>
+        <app-day-night-cycle [earthData]="wfData.earthCycle" [cetusData]="wfData.cetusCycle"></app-day-night-cycle>
+      </div>
     </div>
-
-    <hr>
 
   </div> <!-- /container -->
 
