@@ -19,12 +19,23 @@
       </div>
     </div>
     <div class="row">
-      <div *ngIf="cont.alerts > 0" class="col-12 col-md-6">
-        <div class="d-flex justify-content-flex-start align-items-center">
-          <h2 class="h2-responsive" translate>ALERTS.TITLE</h2>
-          <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
+      <div class="col-12 col-md-6">
+        <!-- Alerts -->
+        <div *ngIf="cont.alerts > 0" class="col-12">
+          <div class="d-flex justify-content-flex-start align-items-center">
+            <h2 class="h2-responsive" translate>ALERTS.TITLE</h2>
+            <span class="badge badge-primary badge-pill ml-3">{{cont.alerts}}</span>
+          </div>
+          <app-alerts [alerts]="wfData.alerts"></app-alerts>
         </div>
-        <app-alerts [alerts]="wfData.alerts"></app-alerts>
+
+        <!-- Day Night Cycle -->
+        <div *ngIf="wfData" class="col-12">
+          <div class="d-flex justify-content-flex-start align-items-center">
+            <h2 class="h2-responsive" translate>DNCYCLE.TITLE</h2>
+          </div>
+          <app-day-night-cycle [earthData]="wfData.earthCycle" [cetusData]="wfData.cetusCycle"></app-day-night-cycle>
+        </div>
       </div>
       <div *ngIf="cont.news > 0" class="col-12 col-md-6">
         <div class="d-flex justify-content-flex-start align-items-center">
@@ -32,12 +43,6 @@
           <span class="badge badge-primary badge-pill ml-3">{{cont.news}}</span>
         </div>
         <app-news [news]="wfData.news"></app-news>
-      </div>
-      <div *ngIf="wfData" class="col-12 col-md-6">
-        <div class="d-flex justify-content-flex-start align-items-center">
-          <h2 class="h2-responsive" translate>DNCYCLE.TITLE</h2>
-        </div>
-        <app-day-night-cycle [earthData]="wfData.earthCycle" [cetusData]="wfData.cetusCycle"></app-day-night-cycle>
       </div>
     </div>
 
