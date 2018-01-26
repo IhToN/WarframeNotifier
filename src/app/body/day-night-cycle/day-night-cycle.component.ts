@@ -1,4 +1,4 @@
-import {AfterViewChecked, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import * as moment from 'moment';
 
 declare var jQuery: any;
@@ -12,7 +12,7 @@ function pad2(number) {
   templateUrl: './day-night-cycle.component.html',
   styleUrls: ['./day-night-cycle.component.css']
 })
-export class DayNightCycleComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class DayNightCycleComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @Input() earthData: any;
   earthEnd: any;
@@ -37,7 +37,7 @@ export class DayNightCycleComponent implements OnInit, AfterViewChecked, OnDestr
     }, 1000);
   }
 
-  ngAfterViewChecked() {
+  ngAfterViewInit() {
     this.loadIcons();
   }
 
