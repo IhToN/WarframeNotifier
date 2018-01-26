@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import * as moment from 'moment';
 
 declare var jQuery: any;
@@ -12,7 +12,7 @@ function pad2(number) {
   templateUrl: './day-night-cycle.component.html',
   styleUrls: ['./day-night-cycle.component.css']
 })
-export class DayNightCycleComponent implements OnInit, AfterViewInit, OnDestroy {
+export class DayNightCycleComponent implements OnInit, AfterViewChecked, OnDestroy {
 
   @Input() earthData: any;
   earthEnd: any;
@@ -37,7 +37,15 @@ export class DayNightCycleComponent implements OnInit, AfterViewInit, OnDestroy 
     }, 1000);
   }
 
-  ngAfterViewInit() {
+  ngAfterViewChecked() {
+    this.loadIcons();
+  }
+
+  ngOnDestroy() {
+    clearInterval(this.interval);
+  }
+
+  loadIcons() {
     jQuery('.day-icon').addLiviconEvo({
       name: 'weather-sun.svg',
       style: 'filled',
@@ -78,10 +86,6 @@ export class DayNightCycleComponent implements OnInit, AfterViewInit, OnDestroy 
       drawOnViewport: true,
       viewportShift: 'full'
     });
-  }
-
-  ngOnDestroy() {
-    clearInterval(this.interval);
   }
 
   formatTimeText(duration) {

@@ -11,9 +11,9 @@ import {slideToLeft} from '../../router.animations';
 })
 export class BodyComponent implements OnInit, OnDestroy {
 
-  wfData: { alerts: [''], news: [''], events: [''] };
+  wfData: { alerts: [''], news: [''], events: [''], earthCycle: [''], cetusCycle: [''] };
   wfsub: any;
-  cont = { events: 0, alerts: 0, news: 0 };
+  cont = {events: 0, alerts: 0, news: 0};
 
   // Inject HttpClient into your component or service.
   constructor(private wfService: WarframeService) {
