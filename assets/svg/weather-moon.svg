@@ -1,0 +1,41 @@
+<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 60 60" xml:space="preserve" data-shift="xy" data-animoptions="{'duration':'0.2'}">
+	<g class="lievo-main">
+			<g class="lievo-common">
+        <g data-animdata="
+				{
+					'steps':[
+						{
+							'duration':'0.8',
+							'position':'0',
+							'vars':{
+								'rotation':'-=30',
+								'svgOrigin':'30 30'
+							}
+						},
+						{
+							'duration':'0.8',
+							'vars':{
+								'rotation':'+=30'
+							}
+						},
+						{
+							'duration':'0.8',
+							'vars':{
+								'rotation':'+=30'
+							}
+						},
+						{
+							'duration':'0.8',
+							'vars':{
+								'rotation':'-=30'
+							}
+						}
+					]
+				}
+			">
+
+				<path class="lievo-altstroke" fill="#FDE3A7" stroke="#F9B32F" stroke-width="2" stroke-linecap="square" stroke-miterlimit="10" d="M30,11c-10.49,0-19,8.51-19,19c0,10.49,8.51,19,19,19c5.18,0,9.87-2.08,13.3-5.44c-10.37-0.15-18.73-8.58-18.73-18.99C24.57,16.52,30,11,30,11z"/>
+			  </g>
+      </g>
+	</g>
+</svg>
