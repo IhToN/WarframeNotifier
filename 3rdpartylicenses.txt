@@ -124,7 +124,7 @@ right-pad@1.0.1
 MIT
 MIT
 
-@angular/core@5.2.1
+@angular/core@5.2.2
 MIT
 MIT
 
