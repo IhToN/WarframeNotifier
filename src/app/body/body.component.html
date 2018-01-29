@@ -9,7 +9,9 @@
     </div>
   </div>
   -->
-  <div class="container">
+  <div class="col-12 text-center" *ngIf="wfData.empty"><img src="http://i.imgur.com/QErkoMg.gif"
+                                                                    alt="Loading"></div>
+  <div class="container" *ngIf="!wfData.empty">
     <!-- Example row of columns -->
     <div *ngIf="cont.events > 0" class="row">
       <div class="jumbotron py-2 col-12">

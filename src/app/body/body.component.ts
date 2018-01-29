@@ -12,7 +12,7 @@ import {NavigationEnd, Router} from '@angular/router';
 })
 export class BodyComponent implements OnInit, OnDestroy {
 
-  wfData: { alerts: [''], news: [''], events: [''], earthCycle: [''], cetusCycle: [''] };
+  wfData: { empty: true, alerts: [''], news: [''], events: [''], earthCycle: [''], cetusCycle: [''] };
   wfsub: any;
   cont = {events: 0, alerts: 0, news: 0};
 
