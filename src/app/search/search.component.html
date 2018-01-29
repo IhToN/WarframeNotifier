@@ -1,7 +1,9 @@
 <main role="main">
   <div class="container">
     <div class="row">
-      <div class="col-12 table-responsive">
+      <div class="col-12 text-center" *ngIf="dropdata.length <= 0"><img src="http://i.imgur.com/QErkoMg.gif"
+                                                alt="Loading"></div>
+      <div class="col-12 table-responsive" *ngIf="dropdata.length > 0">
         <table class="table table-hover table-striped">
           <thead class="primary-color">
           <tr class="text-white">

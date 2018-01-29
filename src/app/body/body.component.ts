@@ -1,4 +1,4 @@
-import {Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {WarframeService} from '../warframe.service';
 import {slideToLeft} from '../../router.animations';
 import {NavigationEnd, Router} from '@angular/router';
