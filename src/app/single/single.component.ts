@@ -38,6 +38,20 @@ export class SingleComponent implements OnInit, AfterViewChecked, OnDestroy {
   }
 
   ngOnInit() {
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+        return;
+      }
+
+      const scrollToTop = window.setInterval(function () {
+        const pos = window.pageYOffset;
+        if (pos > 0) {
+          window.scrollTo(0, pos - 20); // how far to scroll on each step
+        } else {
+          window.clearInterval(scrollToTop);
+        }
+      }, 16); // how fast to scroll (this equals roughly 60 fps)
+    });
     this.ddsub = this.ddService.dropdata$.subscribe((data) => {
         this.itemdropdata = data.filter(elem => elem.chance !== 0 && elem.item.toLowerCase() === this.itemname.toLowerCase())
           .sort(this.ddService.sort_by({
